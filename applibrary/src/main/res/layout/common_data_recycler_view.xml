@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+<com.github.jdsjlzx.recyclerview.LRecyclerView
+    android:overScrollMode="never"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/recycler_view"
+    >
+
+</com.github.jdsjlzx.recyclerview.LRecyclerView>
+    <RelativeLayout
+        android:visibility="gone"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="175dp"
+        android:id="@+id/no_data"
+          android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <View
+            android:background="@mipmap/no_data_icon"
+            android:layout_width="250dp"
+            android:layout_height="129dp"/>
+        <TextView
+            android:layout_centerHorizontal="true"
+            android:text="暂无数据"
+            android:layout_marginTop="162dp"
+            android:textColor="#A1A1A1"
+            android:textSize="18sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/parent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="576px"
+        android:layout_height="wrap_content"
+        android:minHeight="400px"
+        android:layout_centerInParent="true"
+
+        android:orientation="vertical">
+
+        <com.fskj.applibrary.util.PingFangTextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="116px"
+            android:background="#CE1A51"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:text=""
+
+            android:textSize="36px" />
+
+        <TextView
+            android:id="@+id/des"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="205px"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center"
+            android:background="@color/white"
+
+            android:textColor="@color/black"
+            android:textSize="30px"
+
+            />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2px"
+            android:background="#CBCBCB" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="98px"
+            android:layout_gravity="center_horizontal"
+           >
+
+            <com.ruffian.library.RTextView
+                android:id="@+id/cancel"
+                android:layout_width="287px"
+                android:layout_height="98px"
+                android:gravity="center"
+                android:text="取消"
+                android:visibility="gone"
+                android:background="@color/white"
+                android:textColor="@color/black"
+                android:textSize="34px"
+                app:corner_radius_bottom_left="10px" />
+
+            <View
+                android:layout_width="2px"
+                android:layout_height="match_parent"
+                android:background="#CBCBCB" />
+
+            <com.ruffian.library.RTextView
+                android:id="@+id/confirm"
+                android:layout_width="match_parent"
+                android:layout_height="98px"
+                android:gravity="center"
+                android:background="@color/white"
+                android:text="确定"
+                android:textColor="#CE1A51"
+                android:textSize="34px"
+                app:corner_radius_bottom_left="10px"
+                app:corner_radius_bottom_right="10px" />
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

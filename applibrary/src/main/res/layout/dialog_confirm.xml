@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/parent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="520px"
+        android:layout_height="262px"
+
+        android:layout_centerInParent="true"
+        android:background="@drawable/round_24"
+        android:orientation="vertical">
+
+       <TextView
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:textSize="36px"
+           android:textColor="#9368FF"
+           android:id="@+id/title"
+           android:layout_gravity="center_horizontal"
+           android:layout_marginTop="54px"
+           />
+<com.ruffian.library.RTextView
+    android:layout_width="480px"
+    android:layout_height="80px"
+    android:layout_marginTop="54px"
+    android:layout_gravity="center_horizontal"
+    android:background="#9368FF"
+    app:corner_radius="80px"
+    android:textColor="@color/white"
+    android:gravity="center"
+    android:textSize="32px"
+    android:text="知道了"
+    android:textStyle="bold"
+    android:id="@+id/confirm"
+    />
+
+    </LinearLayout>
+</RelativeLayout>

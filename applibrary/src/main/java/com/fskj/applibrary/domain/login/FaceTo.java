@@ -1,0 +1,16 @@
+package com.fskj.applibrary.domain.login;
+
+import lombok.Data;
+
+/**
+ * Copyright：杭州方升科技有限公司
+ * Created hpl on 2020/12/31 13:19
+ * Email:635768909@qq.com
+ */
+@Data
+public class FaceTo {
+    private String orderSn;
+    private String code;
+
+
+}

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="200dp"
+    android:id="@+id/parent"
+    android:layout_alignParentBottom="true"
+    android:alpha="100">
+
+
+        <Button
+            android:id="@+id/btn_camera"
+            android:layout_width="match_parent"
+            android:text="拍照"
+            android:textSize="15sp"
+            android:layout_above="@+id/line2"
+            android:textColor="@color/dark_color"
+            android:background="@color/white"
+            android:layout_height="40dp" />
+
+        <View
+            android:id="@+id/line2"
+            android:layout_width="match_parent"
+            android:background="#d7d7d7"
+            android:layout_above="@+id/btn_album"
+            android:layout_height="2px"/>
+
+        <Button
+            android:id="@+id/btn_album"
+            android:layout_above="@+id/line"
+            android:layout_width="match_parent"
+            android:text="相册"
+            android:textSize="15sp"
+            android:textColor="@color/dark_color"
+            android:background="@color/white"
+            android:layout_height="40dp" />
+
+        <View
+            android:id="@+id/line"
+            android:layout_width="match_parent"
+            android:background="#343434"
+            android:layout_above="@+id/btn_cancel"
+            android:layout_height="7dp"/>
+
+        <Button
+            android:id="@+id/btn_cancel"
+            android:layout_width="match_parent"
+            android:text="@string/cancel"
+            android:textSize="15sp"
+            android:layout_alignParentBottom="true"
+            android:textColor="#97948f"
+            android:background="@color/white"
+            android:layout_height="40dp" />
+
+</RelativeLayout>
+</RelativeLayout>
