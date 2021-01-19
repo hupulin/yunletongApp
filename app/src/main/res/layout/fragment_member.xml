@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:background="@color/app_color"
+        android:layout_width="match_parent"
+        android:layout_height="60dp">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:id="@+id/add_member"
+            android:layout_alignParentEnd="true"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+
+            <View
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="26dp"
+                android:layout_centerVertical="true"
+                android:layout_alignParentEnd="true"
+                android:layout_width="21dp"
+                android:layout_height="21dp"
+                android:background="@mipmap/add_member" />
+        </LinearLayout>
+
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_marginTop="4dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="320dp"
+        android:orientation="horizontal"
+        android:layout_height="36dp">
+        <com.ruffian.library.RTextView
+            app:border_width_normal="2dp"
+            app:border_color_normal="@color/app_color"
+            android:background="@color/app_color"
+            android:id="@+id/clock"
+            android:text="今日已打卡"
+            android:gravity="center"
+            app:corner_radius_bottom_left="10dp"
+            app:corner_radius_top_left="10dp"
+            android:textSize="14sp"
+            android:textColor="@color/white"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent" />
+        <com.ruffian.library.RTextView
+            app:corner_radius_bottom_right="10dp"
+            app:corner_radius_top_right="10dp"
+            app:border_width_normal="2dp"
+            app:border_color_normal="@color/app_color"
+            android:id="@+id/un_clock"
+            android:text="今日未打卡"
+            android:gravity="center"
+            android:textSize="14sp"
+            android:textColor="@color/app_color"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include layout="@layout/common_data_recycler_view"/>
+
+        <com.mcxtzhang.indexlib.IndexBar.widget.IndexBar
+            android:layout_alignParentRight="true"
+            android:id="@+id/indexBar"
+            android:layout_width="24dp"
+            android:layout_centerVertical="true"
+            android:layout_height="400dp"
+            app:indexBarPressBackground="@color/transparent"
+            app:indexBarTextSize="16sp"/>
+
+        <TextView
+            android:id="@+id/tvSideBarHint"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center"
+            android:background="@drawable/shape_side_bar_bg"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:textColor="@android:color/white"
+            android:textSize="48sp"
+            android:visibility="gone"
+            tools:text="A"
+            tools:visibility="visible"/>
+
+    </RelativeLayout>
+
+
+</LinearLayout>

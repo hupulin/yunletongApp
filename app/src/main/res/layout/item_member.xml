@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="85dp"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="84dp">
+
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/head_image"
+                android:layout_width="54dp"
+                android:layout_height="54dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="30dp"
+                app:riv_corner_radius="10dp" />
+
+            <com.ruffian.library.RTextView
+                android:id="@+id/head_image_shadow"
+                android:layout_width="54dp"
+                android:layout_height="54dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="30dp"
+                android:background="@color/member_bg"
+                android:visibility="gone"
+                app:corner_radius="10dp" />
+
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/head_image"
+                android:layout_marginLeft="28dp"
+                android:layout_toRightOf="@+id/head_image"
+                android:text="Bailey Sanders"
+                android:textColor="@color/text_black"
+                android:textSize="16sp" />
+
+            <com.example.yule.util.RatingBar
+                android:id="@+id/ratingbar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/head_image"
+                android:layout_marginLeft="28dp"
+                android:layout_toRightOf="@+id/head_image"
+                app:selectedNumber="0"
+                app:starDistance="5dp"
+                app:starEmptyRes="@mipmap/star_empty"
+                app:starHeight="14dp"
+                app:starIsFull="true"
+                app:starSelectedRes="@mipmap/star"
+                app:starWidth="14dp"
+                app:startTotalNumber="5"
+               />
+
+            <View
+                android:id="@+id/green"
+                android:layout_width="13dp"
+                android:layout_height="13dp"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="12dp"
+                android:layout_toLeftOf="@+id/room_name"
+                android:background="@drawable/oval_bg_green"
+                app:corner_radius="7dp" />
+
+            <TextView
+                android:id="@+id/room_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="42dp"
+                android:layout_marginRight="30dp"
+                android:textColor="@color/text_black"
+                android:textSize="16sp" />
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="30dp"
+            android:background="#E5E5E5" />
+
+    </LinearLayout>
+</layout>

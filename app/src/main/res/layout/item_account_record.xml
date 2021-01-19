@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true">
+
+            <TextView
+                android:id="@+id/type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="35dp"
+                android:layout_marginTop="10dp"
+                android:text="哈哈"
+                android:textColor="@color/text_black_23"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/pay_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/address"
+                android:layout_marginLeft="35dp"
+                android:layout_marginTop="15dp"
+                android:text="购买日期 2020-10-20"
+                android:textColor="#9A9A9A"
+                android:textSize="14sp"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/type"
+                android:layout_marginLeft="35dp"
+                android:layout_marginTop="30dp"
+                android:text="购买日期 2020-10-20"
+                android:textColor="#9A9A9A"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/account"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginLeft="35dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="35dp"
+                android:text=" 2020-10-20"
+                android:textSize="21sp" />
+
+            <TextView
+                android:id="@+id/balance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/type"
+                android:layout_alignParentRight="true"
+                android:layout_marginLeft="35dp"
+                android:layout_marginTop="30dp"
+                android:textColor="#9A9A9A"
+                android:layout_marginRight="35dp"
+                android:text=" 2020-10-20"
+                android:textSize="14sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@+id/balance"
+                android:layout_marginTop="10dp"
+                android:background="#E0E0E0" />
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+
+
+</layout>

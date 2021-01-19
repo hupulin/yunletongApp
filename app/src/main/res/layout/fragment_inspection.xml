@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/app_color">
+
+        <com.fskj.applibrary.util.PingFangTextView
+            android:id="@+id/title_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/right_name"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:gravity="center"
+            android:paddingEnd="20dp"
+            android:text=""
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:visibility="gone"
+        android:id="@+id/recycler_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/title">
+        <com.github.jdsjlzx.recyclerview.LRecyclerView
+            android:id="@+id/recycler_view"
+            android:background="#ffeeeeee"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:overScrollMode="never">
+
+        </com.github.jdsjlzx.recyclerview.LRecyclerView>
+
+        <RelativeLayout
+            android:id="@+id/no_data"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="175dp"
+            android:visibility="gone">
+
+            <View
+                android:layout_width="250dp"
+                android:layout_height="129dp"
+                android:background="@mipmap/no_data_icon" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="162dp"
+                android:text="暂无数据"
+                android:textColor="#A1A1A1"
+                android:textSize="18sp" />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="171dp"
+        android:layout_height="188dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="198dp"
+        android:background="@mipmap/inspection_bg" />
+
+    <com.ruffian.library.RTextView
+        android:id="@+id/start_inspection"
+        android:layout_width="344dp"
+        android:layout_height="58dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
+        android:gravity="center"
+        android:text="开始巡查"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:background_normal="@color/app_color"
+        app:corner_radius="6dp" />
+
+    <com.ruffian.library.RTextView
+        android:id="@+id/finish_inspection"
+
+        android:layout_width="344dp"
+        android:layout_height="58dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="18dp"
+        android:gravity="center"
+        android:text="结束本次巡查"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:visibility="gone"
+        app:background_normal="@color/text_black"
+        app:corner_radius="6dp" />
+
+    <com.ruffian.library.RTextView
+        android:id="@+id/add_record"
+        android:layout_width="344dp"
+        android:layout_height="58dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="100dp"
+        android:gravity="center"
+        android:text="添加巡查记录"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:visibility="gone"
+        app:background_normal="@color/app_color"
+        app:corner_radius="6dp" />
+</RelativeLayout>

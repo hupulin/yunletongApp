@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <include layout="@layout/title_layout" />
+
+    <View
+        android:layout_width="258dp"
+        android:layout_height="233dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="35dp"
+        android:background="@mipmap/authentication_success" />
+
+    <TextView
+        android:layout_marginTop="93dp"
+        android:textSize="33dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="认证成功"
+        android:textColor="@color/black" />
+    <TextView
+        android:layout_marginTop="18dp"
+        android:textSize="15dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="恭喜！你的账号已经注册"
+        android:textColor="@color/text_black" />
+
+  <TextView
+        android:textSize="15dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="快进入APP吧"
+        android:textColor="@color/text_black" />
+
+    <com.ruffian.library.RTextView
+        android:id="@+id/confirm"
+        android:layout_width="340dp"
+        android:layout_height="55dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="154dp"
+        android:gravity="center"
+        android:text="确定"
+        android:textColor="@color/white"
+        android:textSize="17sp"
+        app:background_normal="@color/app_color"
+        app:corner_radius="10dp" />
+</LinearLayout>

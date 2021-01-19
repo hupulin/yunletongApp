@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paths xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--系统相机使用的path--> <!--图片文件 - 外部存储地址-->
+    <!--<external-path-->
+        <!--path="tabao/"-->
+        <!--name="tabao"/>-->
+    <!--<external-path-->
+        <!--name="external_files" path="."/>
+            <files-path name="files" path="" />
+    <cache-path name="cache" path="" />
+        -->
+    <root-path name="root" path="" />
+
+    <external-path name="external" path="."/>
+    <external-files-path name="name" path="path" />
+    <external-cache-path name="name" path="path" />
+
+
+</paths>

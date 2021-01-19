@@ -1,0 +1,155 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.example.yule">
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.FLASHLIGHT"/>
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES"/>
+    <application
+        android:name="com.fskj.applibrary.MainApp"
+        android:allowBackup="true"
+        android:fullBackupContent="@xml/backup_descriptor"
+        android:icon="@mipmap/logo"
+        android:label="@string/app_name"
+        android:networkSecurityConfig="@xml/network_security_config"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        tools:ignore="GoogleAppIndexingWarning">
+        <activity
+            android:name=".wxapi.WXPayEntryActivity"
+            android:exported="true"
+            android:launchMode="singleTop"
+            tools:ignore="DuplicateActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:scheme="wx8a37cef248b6fb6a" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".login.SplashActivity"
+            android:screenOrientation="portrait">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".login.LoginActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".company.CompanyLoginActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".inspection.AddInspectionActivity"
+            android:windowSoftInputMode="adjustPan"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".inspection.InspectionChildDetailActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".company.SelectRoomActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".company.ComMainActivity"
+            android:screenOrientation="portrait" />
+        <!--用来7.0以上手机的文件选择器的跳转-->
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="com.fskj.fun"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/image_paths" />
+        </provider>
+        <activity
+            android:name=".login.CancellationActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".login.FaceVerificationActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".login.AuthenticationActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".login.AuthenticationResultActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mine.BalanceActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mine.AccountDetailsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mine.ClockRecordActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".login.RegisterActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".web.StaticWebViewActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".mine.UserInfoActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+
+        <activity
+            android:name=".mine.InvitationCodeActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ticket.BuyTicketActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ticket.BuyTicketResultActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".member.MemberDetailActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".member.AddMemberActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".member.TicketRecordActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ticket.TicketDetailActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".login.SetPasswordActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+
+        <activity
+            android:name=".main.MainActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustPan">
+
+        </activity>
+
+        <meta-data
+            android:name="com.amap.api.v2.apikey"
+            android:value="40993a7b462c7aede32fbc05ae82f206">
+
+        </meta-data>
+
+        <meta-data
+            android:name="design_width_in_dp"
+            android:value="414" />
+        <meta-data
+            android:name="design_height_in_dp"
+            android:value="896" />
+    </application>
+
+
+</manifest>

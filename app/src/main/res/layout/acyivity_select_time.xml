@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <include layout="@layout/title_layout" />
+    <TextView
+        android:id="@+id/room_name"
+        android:textSize="24sp"
+        android:textColor="@color/text_black_23"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="187dp"
+        android:layout_centerHorizontal="true"
+        android:layout_height="wrap_content"
+        android:text="" />
+    <RelativeLayout
+        android:id="@+id/select_room"
+        android:layout_width="340dp"
+        android:layout_height="75dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="372dp"
+        android:background="@drawable/bg_select_room">
+
+        <View
+            android:layout_width="27dp"
+            android:layout_height="24dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="32dp"
+            android:background="@mipmap/room" />
+
+        <TextView
+            android:textSize="16sp"
+            android:textColor="@color/app_color"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="32dp"
+            android:text="选择房间" />
+
+    </RelativeLayout>
+
+    <com.ruffian.library.RTextView
+        android:id="@+id/scan"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="74dp"
+        app:corner_radius="6dp"
+        android:text="扫码"
+        android:gravity="center"
+        app:background_normal="@color/app_color"
+        android:textSize="17sp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="214dp"
+        android:textColor="@color/white"
+        android:layout_width="321dp"
+        android:layout_height="55dp" />
+
+</RelativeLayout>

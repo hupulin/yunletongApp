@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#7165E3</color>
+    <color name="colorPrimaryDark">#7165E3</color>
+    <color name="colorAccent">#7165E3</color>
+
+    <color name="partTranslucent">#39000000</color>
+
+    <!--textColor-->
+    <color name="text_black">#1C1939</color>
+    <color name="text_black_23">#232222</color>
+    <color name="text_black_3d">#3D3D3D</color>
+    <color name="text_black_2c">#2C2948</color>
+    <color name="text_blue">#7165E3</color>
+
+
+
+    <color name="member_bg">#14000000</color>
+    <color name="app_color">#7165E3</color>
+    <color name="toolbar_bg">#3D8AFF</color>
+    <color name="text_gray_mine">#555353</color>
+    <color name="tab_unSelect">#c9c9c9</color>
+    <color name="gradient_start">#2D79E6</color>
+    <color name="gradient_end">#053476</color>
+    <color name="text_red">#F22F2F</color>
+    <!--<color name="text_black_32">#323233</color>-->
+    <color name="text_gray">#D6E2F6</color>
+    <color name="text_gray_step">#B0BED4</color>
+    <color name="text_gray_main">#8193AE</color>
+    <color name="text_green">#56CB8F</color>
+    <color name="bg_green">#E0F5EB</color>
+    <color name="text_gray_c2">#C2DDFF</color>
+    <color name="text_gray_96">#969799</color>
+
+
+</resources>

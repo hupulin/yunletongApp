@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <include layout="@layout/title_layout" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:text="正确示意流程"
+        android:textColor="@color/app_color"
+        android:textSize="18sp" />
+
+    <ImageView
+        android:layout_marginTop="30dp"
+        android:id="@+id/image"
+        android:layout_gravity="center_horizontal"
+        android:adjustViewBounds="true"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:scaleType="fitStart" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="40dp"
+        android:text="录制时，普通话大声读如下数字"
+        android:textColor="@color/black"
+        android:textSize="22sp" />
+    <GridLayout
+        android:layout_gravity="center_horizontal"
+        android:columnCount="4"
+        android:id="@+id/grid"
+        android:layout_marginTop="26dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+    </GridLayout>
+    <TextView
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="40dp"
+        android:text="正对屏幕>>>录制3~5秒"
+        android:textColor="@color/black"
+        android:textSize="16sp" />
+
+    <com.ruffian.library.RTextView
+        android:id="@+id/confirm"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="30dp"
+        app:corner_radius="6dp"
+        android:text="已记住，进入录制"
+        android:gravity="center"
+        app:background_normal="@color/app_color"
+        android:textSize="17sp"
+        android:textColor="@color/white"
+        android:layout_width="340dp"
+        android:layout_height="60dp" />
+</LinearLayout>

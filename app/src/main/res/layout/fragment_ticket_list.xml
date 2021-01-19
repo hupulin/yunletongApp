@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<include layout="@layout/common_data_recycler_view"/>
+    <com.ruffian.library.RTextView
+
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="30dp"
+        android:id="@+id/buy_ticket"
+        android:layout_gravity="center_horizontal"
+        app:corner_radius="6dp"
+        android:text="购票"
+        android:visibility="gone"
+        android:gravity="center"
+        app:background_normal="@color/app_color"
+        android:textSize="16sp"
+        android:textColor="@color/white"
+        android:layout_width="340dp"
+        android:layout_height="55dp" />
+</RelativeLayout>

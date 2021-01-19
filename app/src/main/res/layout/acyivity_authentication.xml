@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <include layout="@layout/title_layout" />
+
+    <RelativeLayout
+        android:id="@+id/national_emblem"
+        android:layout_width="wrap_content"
+        android:layout_height="89dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="37dp"
+            android:text="身份证国徽面"
+            android:textColor="#262626"
+            android:textSize="16sp" />
+
+        <ImageView
+            android:background="@mipmap/id_national"
+
+            android:id="@+id/iv_national"
+            android:layout_width="57dp"
+            android:layout_height="36dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="37dp" />
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_alignParentBottom="true"
+            android:background="#E3E3E3" />
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/portrait_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="89dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="37dp"
+            android:text="身份证肖像面"
+            android:textColor="#262626"
+            android:textSize="16sp" />
+
+        <ImageView
+            android:background="@mipmap/id_portrait"
+            android:id="@+id/iv_portrait"
+            android:layout_width="57dp"
+            android:layout_height="36dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="37dp" />
+
+
+        <View
+
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_alignParentBottom="true"
+            android:background="#E3E3E3" />
+
+    </RelativeLayout>
+    <com.ruffian.library.RTextView
+        android:id="@+id/confirm"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="136dp"
+        app:corner_radius="6dp"
+        android:text="识别信息"
+        android:gravity="center"
+        app:background_normal="@color/app_color"
+        android:textSize="17sp"
+        android:textColor="@color/white"
+        android:layout_width="340dp"
+        android:layout_height="60dp" />
+
+</LinearLayout>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/parent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#5f000000"
+    android:orientation="vertical">
+<LinearLayout
+    android:layout_width="334dp"
+    android:layout_centerHorizontal="true"
+    android:layout_marginTop="70dp"
+    android:layout_marginBottom="300dp"
+    android:layout_height="wrap_content">
+
+    <ScrollView
+        android:background="@drawable/around_10_withe"
+
+        android:scrollbars="none"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        >
+        <LinearLayout
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <com.github.jdsjlzx.recyclerview.LRecyclerView
+                android:id="@+id/recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:overScrollMode="never">
+
+            </com.github.jdsjlzx.recyclerview.LRecyclerView>
+        </LinearLayout>
+
+
+    </ScrollView>
+
+</LinearLayout>
+
+
+</RelativeLayout>

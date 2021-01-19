@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    >
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <RelativeLayout
+            android:elevation="3dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/ticket_bg"
+            android:layout_centerInParent="true"
+            android:layout_width="384dp"
+            android:layout_height="124dp">
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="12px"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="￥"
+                    android:textColor="@color/ticket_gray"
+                    android:textSize="18sp" />
+                <TextView
+                    android:id="@+id/account"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="1000"
+                    android:textColor="@color/ticket_gray"
+                    android:textSize="36sp" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="130dp"
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/leader_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="组长 Baron"
+                    android:textColor="@color/ticket_gray"
+                    android:textSize="14sp" />
+                <TextView
+                    android:layout_marginTop="12dp"
+                    android:id="@+id/buy_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="购买日期 2020-10-20"
+                    android:textColor="@color/ticket_gray"
+                    android:textSize="14sp" />
+                <TextView
+                    android:layout_marginTop="12dp"
+                    android:id="@+id/user_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="购买日期 2020-10-20"
+                    android:textColor="@color/ticket_gray"
+                    android:textSize="14sp" />
+            </LinearLayout>
+            <TextView
+                android:id="@+id/company_name"
+                android:layout_alignParentBottom="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1000"
+                android:layout_marginLeft="12dp"
+                android:layout_marginBottom="7dp"
+                android:textColor="#cbc8c8"
+                android:textSize="12sp" />
+            <View
+                android:id="@+id/view_type"
+                android:background="@mipmap/ticket_used"
+                android:layout_width="90dp"
+                android:layout_height="72dp"
+                android:layout_alignParentEnd="true"
+                />
+        </RelativeLayout>
+
+
+
+
+    </RelativeLayout>
+
+
+</layout>

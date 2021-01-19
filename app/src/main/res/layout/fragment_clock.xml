@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_centerHorizontal="true"
+        android:background="@color/app_color">
+
+        <LinearLayout
+            android:id="@+id/update"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/right_name"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentEnd="true"
+                android:layout_marginRight="10dp"
+                android:gravity="center"
+                android:text="刷新地址"
+                android:textColor="@color/white"
+                android:textSize="15sp" />
+
+            <View
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="22dp"
+                android:background="@mipmap/update" />
+        </LinearLayout>
+
+    </RelativeLayout>
+
+
+    <com.fskj.applibrary.util.PingFangTextView
+        android:id="@+id/address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginRight="60dp"
+        android:text="正在定位中..."
+        android:textColor="@color/app_color"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="43dp"
+        android:layout_marginTop="220dp">
+
+        <LinearLayout
+            android:id="@+id/view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <View
+                android:layout_width="19dp"
+                android:layout_height="22dp"
+                android:background="@mipmap/location" />
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="109dp"
+                android:background="@color/app_color" />
+
+            <View
+                android:layout_width="19dp"
+                android:layout_height="22dp"
+                android:background="@mipmap/location" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/time_on"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/view"
+            android:text=""
+            android:textColor="@color/text_black_2c"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/time_off"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/time_on"
+            android:layout_marginTop="110dp"
+            android:layout_toRightOf="@+id/view"
+            android:text=""
+            android:textColor="@color/text_black_2c"
+            android:textSize="15sp" />
+    </RelativeLayout>
+
+    <com.ruffian.library.RTextView
+        android:id="@+id/clock"
+        android:layout_width="344dp"
+        android:layout_height="55dp"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="480dp"
+        android:gravity="center"
+        android:text="上班打卡"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:background_normal="@color/app_color"
+        app:corner_radius="6dp" />
+</RelativeLayout>

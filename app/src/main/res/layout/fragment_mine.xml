@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#EEEEEE"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:background="@color/app_color"
+        android:layout_width="match_parent"
+        android:layout_height="60dp">
+
+        <com.fskj.applibrary.util.PingFangTextView
+            android:id="@+id/title_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/right_name"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text=""
+            android:paddingEnd="20dp"
+            android:layout_alignParentEnd="true"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+        <View
+
+            android:visibility="gone"
+            android:layout_alignParentBottom="true"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#dcdcdc" />
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <RelativeLayout
+                android:id="@+id/head_layout"
+                android:layout_width="match_parent"
+                android:layout_height="85dp"
+                android:background="@color/white">
+
+                <com.makeramen.roundedimageview.RoundedImageView
+                    android:id="@+id/head_image"
+                    android:layout_width="57dp"
+                    android:layout_height="57dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="23dp"
+                    app:riv_corner_radius="10dp" />
+
+                <TextView
+                    android:id="@+id/name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="23dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_toRightOf="@+id/head_image"
+                    android:text="Baron"
+                    android:textColor="#1B1A1A"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/company_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="23dp"
+                    android:layout_marginTop="31dp"
+                    android:layout_toRightOf="@+id/head_image"
+                    android:text=""
+                    android:textColor="@color/text_gray_mine"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/manage_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="23dp"
+                    android:layout_marginTop="53dp"
+                    android:layout_toRightOf="@+id/head_image"
+                    android:text="组长：冬天的精灵"
+                    android:textColor="@color/text_gray_mine"
+                    android:textSize="14sp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/invitation_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                android:layout_marginTop="7dp"
+                android:background="@color/white">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="24dp"
+                    android:text="邀请码"
+                    android:textColor="@color/text_gray_mine"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="55dp"
+                    android:text="更换组长"
+                    android:textColor="@color/text_gray_mine"
+                    android:textSize="14sp" />
+
+                <View
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="24dp"
+                    android:background="@mipmap/arrow_right" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/balance_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                android:layout_marginTop="7dp"
+                android:background="@color/white">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="24dp"
+                    android:text="账户余额"
+                    android:textColor="@color/text_gray_mine"
+                    android:textSize="14sp" />
+
+                <View
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="24dp"
+                    android:background="@mipmap/arrow_right" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/clock_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                android:layout_marginTop="7dp"
+                android:background="@color/white">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="24dp"
+                    android:text="打卡记录"
+                    android:textColor="@color/text_gray_mine"
+                    android:textSize="14sp" />
+
+                <View
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="24dp"
+                    android:background="@mipmap/arrow_right" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/set_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                android:layout_marginTop="7dp"
+                android:background="@color/white">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="24dp"
+                    android:text="个人设置"
+                    android:textColor="@color/text_gray_mine"
+                    android:textSize="14sp" />
+
+                <View
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="24dp"
+                    android:background="@mipmap/arrow_right" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/update_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                android:layout_marginTop="7dp"
+                android:background="@color/white">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="24dp"
+                    android:text="检查更新"
+                    android:textColor="@color/text_gray_mine"
+                    android:textSize="14sp" />
+
+                <View
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="24dp"
+                    android:background="@mipmap/arrow_right" />
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/version"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="45dp"
+                android:layout_toRightOf="@+id/head_image"
+                android:text="版本号：V1.1.0"
+                android:textColor="#747474"
+                android:textSize="16sp" />
+
+            <com.ruffian.library.RTextView
+                android:id="@+id/logout"
+                android:layout_width="344dp"
+                android:layout_height="59dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="120dp"
+                android:gravity="center"
+                android:text="退出登录"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                app:background_normal="#E03F3F"
+                app:corner_radius="8dp" />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

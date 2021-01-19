@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/parent"
+    android:background="#5f000000">
+
+
+<RelativeLayout
+    android:layout_width="338dp"
+    android:layout_marginTop="240dp"
+    android:layout_centerHorizontal="true"
+    android:layout_height="wrap_content">
+
+
+    <RelativeLayout
+
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:layout_marginTop="18dp"
+        android:background="@drawable/around_10_withe"
+        android:layout_centerHorizontal="true"
+        android:layout_width="300dp"
+        android:layout_height="220dp"
+        android:orientation="vertical"
+        >
+        <TextView
+            android:layout_marginTop="17dp"
+            android:textColor="#090909"
+            android:textSize="16sp"
+            android:layout_centerHorizontal="true"
+            android:text="修改昵称"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/edit_name"
+            android:layout_width="243dp"
+            android:layout_height="45dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="62dp"
+            android:background="@drawable/login_bg"
+            android:hint="昵称"
+            android:maxLength="11"
+            android:paddingLeft="29dp"
+            android:textColor="@color/text_black_2c"
+            android:textColorHint="@color/text_black_2c"
+            android:textSize="15sp" />
+
+        <com.ruffian.library.RTextView
+            android:id="@+id/confirm"
+            android:layout_width="243dp"
+            android:layout_height="45dp"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="22dp"
+            android:text="保存"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            app:background_normal="@color/app_color"
+            app:corner_radius="10dp" />
+    </RelativeLayout>
+    <View
+        android:id="@+id/cancel"
+        android:layout_alignParentRight="true"
+        android:background="@mipmap/cancle"
+        android:layout_width="28dp"
+        android:layout_height="28dp"/>
+</RelativeLayout>
+
+
+</RelativeLayout>

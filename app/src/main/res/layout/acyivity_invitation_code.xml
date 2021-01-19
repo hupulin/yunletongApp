@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<include layout="@layout/title_layout"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:maxWidth="163dp"
+        android:gravity="center"
+        android:maxLines="2"
+        android:layout_marginTop="30dp"
+        android:textSize="16sp"
+        android:textColor="@color/text_black_23"
+    android:text="如需更换场所或组长 请把邀请码发送给对方"
+        android:layout_height="wrap_content" />
+
+    <GridLayout
+        android:layout_gravity="center_horizontal"
+        android:columnCount="6"
+        android:id="@+id/grid"
+        android:layout_marginTop="56dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+    </GridLayout>
+
+    <com.ruffian.library.RTextView
+        android:id="@+id/refresh"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="335dp"
+        app:corner_radius="6dp"
+        android:text="刷新"
+        android:gravity="center"
+        app:background_normal="@color/app_color"
+        android:textSize="17sp"
+        android:textColor="@color/white"
+        android:layout_width="321dp"
+        android:layout_height="55dp" />
+    <com.ruffian.library.RTextView
+        android:id="@+id/copy"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="40dp"
+        app:corner_radius="6dp"
+        android:text="复制"
+        android:gravity="center"
+        app:background_normal="@color/app_color"
+        android:textSize="17sp"
+        android:textColor="@color/white"
+        android:layout_width="321dp"
+        android:layout_height="55dp" />
+
+
+</LinearLayout>

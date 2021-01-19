@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <include layout="@layout/title_layout" />
+
+    <TextView
+        android:textSize="16sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="96dp"
+        android:text="请输入待添加人员的邀请码"
+        android:textColor="#646363" />
+
+    <EditText
+        android:id="@+id/et_grid"
+        android:layout_width="400dp"
+        android:layout_height="60dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="200dp"
+        android:background="@color/transparent"
+        android:cursorVisible="false"
+        android:inputType="number"
+        android:maxLength="6"
+        android:textColor="@color/transparent"
+        android:textSize="15sp" />
+
+    <GridLayout
+        android:id="@+id/grid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="200dp"
+        android:columnCount="6" />
+    <com.ruffian.library.RTextView
+        android:layout_marginTop="240dp"
+        android:layout_below="@+id/grid"
+        android:id="@+id/confirm"
+        android:layout_width="340dp"
+        android:layout_height="60dp"
+        android:gravity="center"
+        android:layout_centerHorizontal="true"
+        android:text="确认"
+        android:textColor="@color/white"
+        android:textSize="17sp"
+        app:background_normal="@color/app_color"
+        app:corner_radius="6dp" />
+</RelativeLayout>

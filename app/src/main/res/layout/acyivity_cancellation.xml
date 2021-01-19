@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<include layout="@layout/title_layout"/>
+
+    <RelativeLayout
+        android:layout_gravity="center_horizontal"
+        android:paddingLeft="29dp"
+        android:layout_marginTop="76dp"
+        android:background="@drawable/login_bg"
+        android:layout_width="340dp"
+        android:layout_height="60dp">
+        <TextView
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/login_bg"
+            android:hint="手机号"
+            android:textColor="@color/text_black_23"
+            android:textColorHint="@color/text_black_23"
+            android:textSize="15sp" />
+        <TextView
+            android:layout_centerInParent="true"
+            android:id="@+id/phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/login_bg"
+            android:hint=""
+            android:textColor="@color/text_black_23"
+            android:textColorHint="@color/text_black_23"
+            android:textSize="15sp" />
+
+    </RelativeLayout>
+    <RelativeLayout
+
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:id="@+id/rl_code"
+        android:layout_width="340dp"
+        android:layout_height="60dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="30dp">
+
+        <EditText
+            android:inputType="number"
+            android:maxLength="4"
+            android:id="@+id/et_code"
+            android:layout_width="340dp"
+            android:layout_height="60dp"
+            android:background="@drawable/login_bg"
+            android:hint="验证码"
+            android:paddingLeft="29dp"
+            android:textColor="@color/text_black_2c"
+            android:textColorHint="@color/text_black_2c"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/send_code"
+
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:text="发送验证码"
+            android:textColor="@color/text_black"
+            android:textSize="15sp" />
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:layout_marginLeft="44dp"
+        android:layout_marginTop="34dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:id="@+id/select_check"
+            android:layout_width="25dp"
+            android:layout_height="25dp">
+            <View
+                android:background="@mipmap/select_on"
+                android:id="@+id/select"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/to_agreement"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="注销账号协议条款"
+            android:textColor="@color/app_color"
+            android:textSize="14sp" />
+
+    </LinearLayout>
+
+
+    <com.ruffian.library.RTextView
+        android:id="@+id/confirm"
+        android:layout_width="344dp"
+        android:layout_height="59dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="120dp"
+        android:gravity="center"
+        android:text="注销"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:background_normal="#E03F3F"
+        app:corner_radius="8dp" />
+
+
+</LinearLayout>
