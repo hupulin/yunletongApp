@@ -92,12 +92,12 @@ public class MineFragment extends BaseFragment {
                 companyName.setText("公司：" + "暂未绑定");
 
             }
-            if (!TextUtils.isEmpty(userInfoTo.getFid_user().getNickname())) {
+
+            if (userInfoTo.getFid_user()!=null&&!(TextUtils.isEmpty(userInfoTo.getFid_user().getNickname()))) {
                 manageName.setText("组长：" + userInfoTo.getFid_user().getNickname());
             } else {
                 manageName.setText("组长：" + "暂未绑定");
             }
-
         } else if (useType == 1) {//妈咪
             name.setText(userInfoTo.getNickname());
             companyName.setVisibility(View.GONE);

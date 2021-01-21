@@ -14,16 +14,22 @@ import com.example.yule.R;
 import com.example.yule.inspection.AddInspectionActivity;
 import com.example.yule.inspection.adapter.InspectionChildAdapter;
 import com.example.yule.inspection.presenter.InspectionPresenter;
+import com.example.yule.login.LoginActivity;
+import com.fskj.applibrary.base.ActivityManager;
+import com.fskj.applibrary.base.BaseActivity;
 import com.fskj.applibrary.base.BaseFragment;
 import com.fskj.applibrary.base.SpUtil;
 import com.fskj.applibrary.domain.inspection.InspectionTo;
+import com.fskj.applibrary.util.TipsDialog;
 import com.github.jdsjlzx.recyclerview.LRecyclerView;
+import com.gitonway.lee.niftymodaldialogeffects.lib.NiftyDialogBuilder;
 import com.ruffian.library.RTextView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
+import rx.Observable;
 
 /**
  * Copyright：杭州方升科技有限公司
@@ -71,13 +77,13 @@ public class InspectionFragment extends BaseFragment {
                 break;
             case R.id.finish_inspection:
                 if (inspectionId != 0) {
-                    presenter.finishInspection(inspectionId);
+                    showDialog();
                 }
                 break;
             case R.id.add_record:
 
                 Intent intent = new Intent(getActivity(), AddInspectionActivity.class);
-                intent.putExtra("id",inspectionId);
+                intent.putExtra("id", inspectionId);
                 startActivity(intent);
                 goToAnimation(1);
                 break;
@@ -91,16 +97,16 @@ public class InspectionFragment extends BaseFragment {
     LRecyclerView recyclerView;
     @BindView(R.id.recycler_layout)
     RelativeLayout recyclerLayout;
-    private  boolean isList;
+    private boolean isList;
 
     @Override
     public void onResume() {
         super.onResume();
-        if(isList){
-            if(SpUtil.getBoolean("isAdd")){
+        if (isList) {
+            if (SpUtil.getBoolean("isAdd")) {
                 presenter.getInspectionChildList(inspectionId);
 
-                SpUtil.put("isAdd",false);
+                SpUtil.put("isAdd", false);
             }
         }
     }
@@ -112,7 +118,7 @@ public class InspectionFragment extends BaseFragment {
         presenter.getInspectionChildList(inspectionId);
 
         title.setText("正在巡查");
-        isList=true;
+        isList = true;
         view.setVisibility(View.GONE);
         addRecord.setVisibility(View.VISIBLE);
         finishInspection.setVisibility(View.VISIBLE);
@@ -123,12 +129,23 @@ public class InspectionFragment extends BaseFragment {
 
     }
 
+    private void showDialog() {
+        NiftyDialogBuilder dialog = TipsDialog.show(getActivity(), "结束本次巡查");
+        TextView confirm = dialog.findViewById(R.id.confirm);
+        TextView cancel = dialog.findViewById(R.id.cancel);
+        cancel.setText("取消");
+        confirm.setText("结束");
+        confirm.setOnClickListener(v1 -> {
+            dialog.dismiss();
+            presenter.finishInspection(inspectionId);
+        });
+    }
 
     @Override
     public void loadDataSuccess(Object data) {
         recyclerLayout.setVisibility(View.GONE);
         title.setText("巡查");
-        isList=false;
+        isList = false;
 
         view.setVisibility(View.VISIBLE);
         finishInspection.setVisibility(View.GONE);

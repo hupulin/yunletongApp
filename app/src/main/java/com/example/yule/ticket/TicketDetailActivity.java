@@ -59,19 +59,24 @@ public class TicketDetailActivity extends BaseActivity {
         rightName.setText("退票");
         model = (TicketTo) getIntent().getSerializableExtra("mode");
         Glide.with(appContext).load(userInfoHelp.getUserInfo().getHeadimg()) .placeholder(R.mipmap.use_image).into(headImage);
-        userName.setText(userInfoHelp.getUserInfo().getName());
+        userName.setText(userInfoHelp.getUserInfo().getNickname());
         imgCode.setBackground(new BitmapDrawable(getResources(), Create2DCode(model.getCode())));
         adminName.setText(model.getAdmin_name() + "  " + model.getMid_to_name());
         presenter.getTicketStatus(model.getCode());
     }
 
-    @OnClick({R.id.right_name,})
+    @OnClick({R.id.right_name,R.id.code,})
     public void onViewClicked(View view) {
 
         switch (view.getId()) {
             case R.id.right_name:
 //                presenter.refundTicket(model.getCode());
                 showDialog();
+                break;
+                case R.id.code:
+//                presenter.refundTicket(model.getCode());
+                    onBackPressed();
+//                showDialog();
                 break;
         }
     }

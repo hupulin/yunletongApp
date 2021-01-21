@@ -3,6 +3,7 @@ package com.example.yule.mine;
 import android.Manifest;
 import android.content.ContentValues;
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -27,6 +28,7 @@ import com.fskj.applibrary.impl.PermissionListener;
 import com.fskj.applibrary.util.CommonDialog;
 import com.fskj.applibrary.util.DateUtil;
 import com.fskj.applibrary.util.FileUtil;
+import com.fskj.applibrary.util.TipsDialog;
 import com.gitonway.lee.niftymodaldialogeffects.lib.NiftyDialogBuilder;
 import com.soundcloud.android.crop.Crop;
 
@@ -83,7 +85,20 @@ public class UserInfoActivity extends BaseActivity implements PermissionListener
         alertDialog.show();
         alertDialog.setCanceledOnTouchOutside(true);
     }
-
+    private void showDialog() {
+        NiftyDialogBuilder dialog = TipsDialog.show(this, "注销后会删除账户所有数据\n" +
+                "包括余额，请谨慎操作");
+        TextView confirm = dialog.findViewById(R.id.confirm);
+        TextView cancel = dialog.findViewById(R.id.cancel);
+        cancel.setText("取消");
+        confirm.setText("继续注销");
+        confirm.setTextColor(Color.parseColor("#DF3434"));
+        confirm.setOnClickListener(v1 -> {
+            dialog.dismiss();
+            Intent intent = new Intent(this, CancellationActivity.class);
+            startActivity(intent);
+        });
+    }
     @OnClick({R.id.head_layout, R.id.nick_name, R.id.agreement_layout, R.id.password_layout, R.id.cancellation_layout,})
     public void onViewClicked(View view) {
         Intent intent;
@@ -110,8 +125,8 @@ public class UserInfoActivity extends BaseActivity implements PermissionListener
                 break;
                 case R.id.cancellation_layout:
 //                user/cancellationAgreement 注销协议
-                 intent = new Intent(this, CancellationActivity.class);
-                startActivity(intent);
+                    showDialog();
+
                 break;
         }
     }

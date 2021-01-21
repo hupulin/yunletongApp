@@ -83,19 +83,7 @@ public class AddInspectionActivity extends BaseActivity implements UploadImageLi
 
     @Override
     public void uploadImageSuccess(String path) {
-//        String[] list = path.split(";");
-//        Map<String, Object> paramMap = new HashMap<String, Object>();
-//        paramMap.put("inspectionId", getIntent().getIntExtra("id", 0));
-//        paramMap.put("floorName", etFloor.getText().toString().trim());
-//        paramMap.put("box_involve", intString.substring(0, intString.length() - 1));
-//        if (!TextUtils.isEmpty(content.getText().toString().trim())) {
-//            paramMap.put("remarks", content.getText().toString().trim());
-//        }
-//        for (int i = 0; i < list.length; i++) {
-//            paramMap.put("boxImg[" + i + "]", list[i]);
-//        }
-//        showMessage("方位接口");
-//        presenter.addInspection(paramMap);
+//
         createParam();
         param.setBoxImg(Arrays.asList(path.split(";")));
         presenter.addInspection(param);

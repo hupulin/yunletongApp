@@ -22,7 +22,8 @@ public class MainApp extends Application {
     public void onCreate() {
         super.onCreate();
         appContext = this;
-//        MultiDex.install(this);
+        MultiDex.install(this);
+
 
         ApiClient.getInstance().init(this);
         BindService.getInstance(this).startBind(2,this.getPackageName());

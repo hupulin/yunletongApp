@@ -44,6 +44,7 @@ public class InspectionChildDetailActivity extends BaseActivity {
     }
 
     private void initView() {
+        setTitleName("巡查详情");
         model= (InspectionRecordTo.DataBean.BoxInfoBean) getIntent().getSerializableExtra("model");
         floor.setText("巡查楼层    "+model.getFloor_name());
         result.setText("巡查结果    "+model.getType_name());

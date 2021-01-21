@@ -18,11 +18,12 @@ import com.fskj.applibrary.domain.main.ClockRecordTo;
  * Created hpl on 2020/12/29 11:15
  * Email:635768909@qq.com
  */
-public class ClockAdapter  extends BaseAdapter<ClockRecordTo.DataBean, ItemClockToBinding>  {
+public class ClockAdapter extends BaseAdapter<ClockRecordTo.DataBean, ItemClockToBinding> {
 
     public ClockAdapter(Activity context) {
         super(context);
     }
+
     @NonNull
     @Override
     public BindingHolder<ItemClockToBinding> onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -40,10 +41,10 @@ public class ClockAdapter  extends BaseAdapter<ClockRecordTo.DataBean, ItemClock
         ClockRecordTo.DataBean model = mList.get(position);
         binding.address.setText(model.getAddress());
         binding.clockTime.setText(model.getCreated_at());
-        if(model.getType()==1){
-            binding.viewType.setBackground(mContext.getResources().getDrawable(R.mipmap.work_on));
-        }else{
+        if (model.getType() == 1) {
             binding.viewType.setBackground(mContext.getResources().getDrawable(R.mipmap.work_off));
+        } else {
+            binding.viewType.setBackground(mContext.getResources().getDrawable(R.mipmap.work_on));
 
         }
 

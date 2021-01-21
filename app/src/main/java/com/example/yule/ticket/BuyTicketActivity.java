@@ -72,7 +72,8 @@ public class BuyTicketActivity extends BaseActivity {
     @Override
     public void loadDataSuccess(Object data) {
         super.loadDataSuccess(data);
-        balance.setText("￥" + userInfoTo.getAccount() / 100.0);
+        userInfoTo=userInfoHelp.getUserInfo();
+        balance.setText("(余额￥" + userInfoTo.getAccount() / 100.0+")");
 
     }
 

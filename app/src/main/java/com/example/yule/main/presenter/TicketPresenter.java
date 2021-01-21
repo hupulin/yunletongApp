@@ -1,5 +1,6 @@
 package com.example.yule.main.presenter;
 
+import com.example.yule.ticket.fragment.TicketListFragment;
 import com.fskj.applibrary.api.ApiClient;
 import com.fskj.applibrary.api.TicketApi;
 import com.fskj.applibrary.base.BaseFragment;
@@ -78,5 +79,6 @@ public class TicketPresenter extends BasePresenter {
     public void recycleViewRefresh() {
         super.recycleViewRefresh();
         getTicket(adminId);
+        ((TicketListFragment)mFragment).recycleViewRefresh();
     }
 }

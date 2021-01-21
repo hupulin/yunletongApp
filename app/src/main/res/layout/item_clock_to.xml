@@ -37,10 +37,10 @@
             <View
                 android:layout_centerVertical="true"
                 android:id="@+id/view_type"
-                android:background="@mipmap/ticket_used"
-                android:layout_width="65dp"
+                android:background="@mipmap/work_on"
+                android:layout_width="80dp"
                 android:layout_marginRight="10dp"
-                android:layout_height="65dp"
+                android:layout_height="80dp"
                 android:layout_alignParentEnd="true" />
             <View
                 android:layout_marginTop="23dp"

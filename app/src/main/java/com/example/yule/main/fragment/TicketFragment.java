@@ -101,10 +101,10 @@ public class TicketFragment extends BaseFragment {
 
     private void initFragment() {
         FragmentPagerAdapter adapter = new FragmentAdapter(getChildFragmentManager(), fragmentList);
-        Fragment1 = new TicketListFragment(0);
-        Fragment2 = new TicketListFragment(1);
-        Fragment3 = new TicketListFragment(2);
-        Fragment4 = new TicketListFragment(3);
+        Fragment1 = new TicketListFragment(0,this);
+        Fragment2 = new TicketListFragment(1,this);
+        Fragment3 = new TicketListFragment(2,this);
+        Fragment4 = new TicketListFragment(3,this);
 
         fragmentList.add(Fragment1);
         fragmentList.add(Fragment2);
@@ -157,11 +157,13 @@ public class TicketFragment extends BaseFragment {
     @Override
     public void onResume() {
         super.onResume();
-        presenter.getTicketTotal(0);
-        presenter.getTicketCom();
-
+        refreshData();
     }
 
+    public  void refreshData(){
+        presenter.getTicketTotal(0);
+        presenter.getTicketCom();
+    }
     List<CompanyTo> modeList = new ArrayList<>();
 
     @Override

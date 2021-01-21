@@ -112,6 +112,7 @@ public class SelectRoomPopWindow extends PopupWindow implements View.OnClickList
                 // TODO Auto-generated method stub
                 String currentText = (String) provinceAdapter.getItemText(wheel.getCurrentItem());
                 strFloor = currentText;
+                selectProvinceIndex = newValue;
 //                strRoom = mProvinceDatas.get(newValue).getRooms().get(0).getName();
                 strRoom = mList.get(newValue).getRooms().get(0).getName();
                 code = mList.get(selectProvinceIndex).getRooms().get(0).getId() + "";

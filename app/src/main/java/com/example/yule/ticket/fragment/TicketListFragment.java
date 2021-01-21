@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import com.example.yule.R;
 import com.example.yule.main.adapter.TicketUnUserAdapter;
 import com.example.yule.main.adapter.TicketUserAdapter;
+import com.example.yule.main.fragment.TicketFragment;
 import com.example.yule.main.presenter.TicketPresenter;
 import com.example.yule.ticket.BuyTicketActivity;
 import com.fskj.applibrary.base.BaseFragment;
@@ -38,9 +39,11 @@ public class TicketListFragment extends BaseFragment {
     LRecyclerView recyclerView;
     TicketPresenter presenter;
     int type;
+    TicketFragment fragment;
 
-    public TicketListFragment(int type) {
+    public TicketListFragment(int type,TicketFragment fragment) {
         this.type = type;
+        this.fragment = fragment;
     }
 
     @Nullable
@@ -50,6 +53,13 @@ public class TicketListFragment extends BaseFragment {
         unbinder = ButterKnife.bind(this, mView);
         initView();
         return mView;
+    }
+
+
+    public void recycleViewRefresh(){
+        if(fragment!=null){
+            fragment.refreshData();
+        }
     }
 
     private void initView() {

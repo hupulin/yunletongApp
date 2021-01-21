@@ -219,7 +219,6 @@ public class IndexBar extends View {
             case MeasureSpec.UNSPECIFIED:
                 break;
         }
-
         setMeasuredDimension(measureWidth, measureHeight);
     }
 
