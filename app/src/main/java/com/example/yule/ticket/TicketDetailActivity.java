@@ -53,6 +53,12 @@ public class TicketDetailActivity extends BaseActivity {
         initData();
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        handler.removeCallbacksAndMessages(null);
+    }
+
     private void initData() {
         presenter = new TicketDetailPresenter(this);
         setTitleName("电子票");

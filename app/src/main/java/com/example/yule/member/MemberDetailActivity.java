@@ -8,11 +8,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.example.yule.Constant;
 import com.example.yule.R;
 import com.example.yule.member.presenter.MemberDetailPresenter;
 import com.example.yule.util.RatingBar;
 import com.fskj.applibrary.base.BaseActivity;
+import com.fskj.applibrary.base.Constant;
 import com.fskj.applibrary.domain.MemberTo;
 
 import butterknife.BindView;

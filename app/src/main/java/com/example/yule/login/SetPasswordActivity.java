@@ -202,7 +202,6 @@ public class SetPasswordActivity extends BaseActivity {
             Intent  intent = new Intent(this, AuthenticationActivity.class);
             startActivity(intent);
             goToAnimation(1);
-            showMessage("我去登录");
             presenter.login( etPhone.getText().toString(),etPassword.getText().toString());
         }
     }

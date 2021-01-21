@@ -10,9 +10,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.bumptech.glide.Glide;
-import com.example.yule.Constant;
 import com.example.yule.R;
 import com.example.yule.databinding.ItemMemberBinding;
+import com.fskj.applibrary.base.Constant;
 import com.fskj.applibrary.base.adapter.BaseAdapter;
 import com.fskj.applibrary.base.adapter.BindingHolder;
 import com.fskj.applibrary.domain.MemberTo;

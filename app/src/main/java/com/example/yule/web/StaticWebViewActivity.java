@@ -8,9 +8,9 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
-import com.example.yule.Constant;
 import com.example.yule.R;
 import com.fskj.applibrary.base.BaseActivity;
+import com.fskj.applibrary.base.Constant;
 
 /**
  * Copyright：杭州方升科技有限公司

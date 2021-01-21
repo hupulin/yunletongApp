@@ -8,9 +8,9 @@ import android.widget.GridLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.yule.Constant;
 import com.example.yule.R;
 import com.fskj.applibrary.base.BaseActivity;
+import com.fskj.applibrary.base.Constant;
 import com.fskj.applibrary.base.PostImageDetailActivity;
 import com.fskj.applibrary.domain.inspection.InspectionRecordTo;
 import com.squareup.picasso.Picasso;

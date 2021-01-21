@@ -4,6 +4,7 @@ import android.content.Context;
 import android.util.Log;
 
 import com.fskj.applibrary.R;
+import com.fskj.applibrary.base.Constant;
 import com.fskj.applibrary.base.SpUtil;
 import com.fskj.applibrary.util.NetWorkUtil;
 import com.google.gson.Gson;
@@ -44,9 +45,11 @@ public class ApiClient {
     private static Retrofit retrofit;
     private Context mContext;
     private long time = System.currentTimeMillis();
-    public static final String baseUrl="https://webdev.fangsheng.tech/";//方升外网测试
-//    private int[] certificates = {R.raw.ifishfun};
-    private int[] certificates = {R.raw.fangsheng};
+//    public static final String baseUrl="https://webdev.fangsheng.tech/";//方升外网测试
+    private String baseUrl = Constant.BaseUrl;
+
+        private int[] certificates = {R.raw.ifishfun};
+//    private int[] certificates = {R.raw.fangsheng};
 
 //
 

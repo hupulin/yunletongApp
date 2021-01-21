@@ -98,7 +98,6 @@ public class RegisterPresenter extends BasePresenter {
             @Override
             public void onNext(MessageTo msg) {
                 if (msg.getError_code() == 0) {
-                    showMessage("登录成功");
                     SpUtil.put("Token", msg.getAccess_token());
                     getUserInfo();
                 } else {

@@ -13,9 +13,9 @@ import android.view.ViewGroup;
 import android.widget.GridLayout;
 import android.widget.ImageView;
 
-import com.example.yule.Constant;
 import com.example.yule.R;
 import com.example.yule.databinding.ItemInspectionChildBinding;
+import com.fskj.applibrary.base.Constant;
 import com.fskj.applibrary.base.PostImageDetailActivity;
 import com.fskj.applibrary.base.adapter.BaseAdapter;
 import com.fskj.applibrary.base.adapter.BindingHolder;
