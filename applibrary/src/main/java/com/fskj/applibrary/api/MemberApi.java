@@ -6,6 +6,8 @@ import com.fskj.applibrary.domain.MessageTo;
 import com.fskj.applibrary.domain.TicketRecordParam;
 import com.fskj.applibrary.domain.TicketRecordTo;
 import com.fskj.applibrary.domain.com.SelectTypeParam;
+import com.fskj.applibrary.domain.main.IssueTicketParam;
+import com.fskj.applibrary.domain.main.TicketTypeTo;
 
 import java.util.List;
 
@@ -44,4 +46,10 @@ public interface MemberApi {
      */
     @POST("api/u/add_from_key")
     Observable<MessageTo> addMember(@Body CodeParam param) ;
+
+    /**
+     *
+     */
+    @POST("api/management/summary")
+    Observable<MessageTo<TicketTypeTo>> issueTicket(@Body IssueTicketParam param) ;
 }

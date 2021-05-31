@@ -47,7 +47,7 @@ public class MemberAdapter extends BaseAdapter<MemberTo, ItemMemberBinding> {
         ItemMemberBinding binding = holder.getBinding();
         MemberTo model = mList.get(position);
         binding.name.setText(model.getNickname());
-        Log.i("2222222222", "onBindViewHolder: " + type);
+//        Log.i("2222222222", "onBindViewHolder: " + type);
         if ("0".equals(type)) {
             binding.roomName.setVisibility(View.GONE);
             binding.green.setVisibility(View.GONE);

@@ -4,7 +4,9 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.databinding.DataBindingUtil;
 import android.support.annotation.NonNull;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.yule.R;
@@ -39,10 +41,20 @@ public class TicketRecordAdapter extends BaseAdapter<TicketRecordTo.DataBean, It
         ItemTicketRecordBinding binding = holder.getBinding();
         TicketRecordTo.DataBean model = mList.get(position);
 //        model.getTicket_use_at().substring(0, 10)
+        if(model.getUse_type()==2){
+            binding.refund.setVisibility(View.VISIBLE);
+            if(!TextUtils.isEmpty(model.getAdmin_name())){
+                binding.roomName.setText(model.getAdmin_name());
+            }
+        }else{
+            binding.refund.setVisibility(View.GONE);
+            if(!TextUtils.isEmpty(model.getAdmin_name())&&!TextUtils.isEmpty(model.getRoom_name())){
+                binding.roomName.setText(model.getAdmin_name()+"—"+model.getRoom_name());
+            }
+        }
+
         binding.name.setText(model.getMid_to_name());
-        binding.roomName.setText(model.getAdmin_name());
         binding.buyTime.setText( model.getCreated_at());
         binding.useTime.setText( model.getTicket_use_at());
-
     }
 }

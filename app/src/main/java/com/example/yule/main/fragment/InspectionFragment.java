@@ -39,6 +39,8 @@ import rx.Observable;
 public class InspectionFragment extends BaseFragment {
     @BindView(R.id.title_name)
     TextView title;
+    @BindView(R.id.right_name)
+    TextView rightName;
     @BindView(R.id.view)
     View view;
     @BindView(R.id.start_inspection)
@@ -65,10 +67,11 @@ public class InspectionFragment extends BaseFragment {
         presenter = new InspectionPresenter(this);
         setRecycleView(adapter, recyclerView, presenter, true, true, noData);
         title.setText("巡查");
+        rightName.setText("巡查记录");
 
     }
 
-    @OnClick({R.id.start_inspection, R.id.finish_inspection, R.id.add_record,})
+    @OnClick({R.id.start_inspection, R.id.finish_inspection, R.id.add_record, R.id.right_name,})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.start_inspection:
@@ -85,6 +88,11 @@ public class InspectionFragment extends BaseFragment {
                 Intent intent = new Intent(getActivity(), AddInspectionActivity.class);
                 intent.putExtra("id", inspectionId);
                 startActivity(intent);
+                goToAnimation(1);
+                break;
+                case R.id.right_name:
+                Intent intent1 = new Intent(getActivity(), InspectionListActivity.class);
+                startActivity(intent1);
                 goToAnimation(1);
                 break;
         }

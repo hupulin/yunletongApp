@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -92,9 +93,7 @@ public class ClockFragment extends BaseFragment implements PermissionListener {
 
             case Manifest.permission.READ_EXTERNAL_STORAGE:
                 openCamera();
-
                 break;
-
             case Manifest.permission.ACCESS_FINE_LOCATION:
                 setLocate();
                 break;
@@ -108,40 +107,19 @@ public class ClockFragment extends BaseFragment implements PermissionListener {
         if (resultCode == RESULT_OK) {
             switch (requestCode) {
                 case Constant.RESULT_CAMERA:
-//                    Uri uri2 = MediaStore.Images.Media.EXTERNAL_CONTENT_URI;
-//                    compress( FileUtil.getPath(getActivity(),uri2));
-                    presenter.faceComparison(photoPath, address.getText().toString(), latitude, longitude);
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            isCamera=false;
+                        }
+                    },200);
 
+                    presenter.faceComparison(photoPath, address.getText().toString(), latitude, longitude);
                     break;
             }
         }
     }
 
-    private void compress(String path) {
-        Luban.with(getActivity())
-                .load(path)                                   // 传人要压缩的图片列表
-                .ignoreBy(100)                                  // 忽略不压缩图片的大小
-                .setCompressListener(new OnCompressListener() { //设置回调
-                    @Override
-                    public void onStart() {
-                        // TODO 压缩开始前调用，可以在方法内启动 loading UI
-                    }
-
-                    @Override
-                    public void onSuccess(File file) {
-                        // TODO 压缩成功后调用，返回压缩后的图片文件
-                        Log.i("2222222", "file: " + file.length());
-//                        presenter.faceComparison(file   , address.getText().toString(), latitude, longitude);
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        // TODO 当压缩过程出现问题时调用
-                        Log.i("2222222", "e: " + e.toString());
-
-                    }
-                }).launch();
-    }
 
     private String photoPath;
 
@@ -151,7 +129,7 @@ public class ClockFragment extends BaseFragment implements PermissionListener {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             try {
                 ContentValues values = new ContentValues(1);
-                File mOutPhotoFile = new File(MainApp.getCacheImagePath(), DateUtil.getDateString(DateUtil.mFormatTimeCamara) + ".png");
+                File mOutPhotoFile = new File(MainApp.getCacheImagePath(), DateUtil.getDateString(DateUtil.mFormatTimeCamaraDetail) + ".png");
                 photoPath = mOutPhotoFile.getAbsolutePath();
                 values.put(MediaStore.Images.Media.MIME_TYPE, "image/jpg");
                 values.put(MediaStore.Images.Media.DATA, photoPath);
@@ -160,16 +138,15 @@ public class ClockFragment extends BaseFragment implements PermissionListener {
                 e.printStackTrace();
             }
         } else {
-            File mOutPhotoFile = new File(MainApp.getCacheImagePath(), DateUtil.getDateString(DateUtil.mFormatTimeCamara) + ".png");
+            File mOutPhotoFile = new File(MainApp.getCacheImagePath(), DateUtil.getDateString(DateUtil.mFormatTimeCamaraDetail) + ".png");
             photoPath = mOutPhotoFile.getAbsolutePath();
             uri = Uri.fromFile(mOutPhotoFile);
 
         }
         intentCamera.putExtra(MediaStore.EXTRA_OUTPUT, uri);
         intentCamera.putExtra(MediaStore.EXTRA_VIDEO_QUALITY, 1);
+        isCamera=true;
         startActivityForResult(intentCamera, Constant.RESULT_CAMERA);
-        isCamera = true;
-
     }
 
     @Override
@@ -192,8 +169,8 @@ public class ClockFragment extends BaseFragment implements PermissionListener {
         }
     }
 
-    LoadingDialog loadingDialog;
 
+    LoadingDialog loadingDialog;
     public void showDialog() {
         loadingDialog = new LoadingDialog(getActivity(), "", com.fskj.applibrary.R.drawable.loading_animation);
         loadingDialog.setCanceledOnTouchOutside(false);
@@ -205,7 +182,12 @@ public class ClockFragment extends BaseFragment implements PermissionListener {
             loadingDialog.dismiss();
         }
     }
+    public void stopLocation() {
+        if(mLocationClient!=null){
+            mLocationClient.stopLocation();
+        }
 
+    }
     public AMapLocationClientOption mLocationOption = null;
     public AMapLocationClient mLocationClient = null;
 
@@ -213,35 +195,45 @@ public class ClockFragment extends BaseFragment implements PermissionListener {
         AMapLocationClientOption option = new AMapLocationClientOption();
         mLocationOption = new AMapLocationClientOption();
         mLocationClient = new AMapLocationClient(getActivity());
+        mLocationOption.setOnceLocation(true);
         mLocationClient.setLocationListener(mAMapLocationListener);
         option.setLocationPurpose(AMapLocationClientOption.AMapLocationPurpose.SignIn);
         mLocationOption.setLocationMode(AMapLocationClientOption.AMapLocationMode.Hight_Accuracy);
-        mLocationOption.setLocationMode(AMapLocationClientOption.AMapLocationMode.Battery_Saving);
         mLocationClient.setLocationOption(mLocationOption);
-        mLocationOption.setInterval(200000);
+        mLocationOption.setInterval(10000);
         mLocationClient.startLocation();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        mLocationClient.stopLocation();
+
     }
 
     String latitude;
     String longitude;
+    Handler handler =new Handler();
+    boolean isCamera;
     AMapLocationListener mAMapLocationListener = amapLocation -> {
         if (amapLocation != null) {
             if (amapLocation.getErrorCode() == 0) {
                 latitude = String.valueOf(amapLocation.getLatitude());
                 longitude = String.valueOf(amapLocation.getLongitude());
                 address.setText(amapLocation.getAddress());
+                Log.i("222222", ": "+amapLocation.toStr());
                 dismissDialog();
             }
         }
     };
 
-    private boolean isCamera;
-
     @Override
     public void onResume() {
         super.onResume();
-        presenter.clockList();
-
+        if(!isCamera){
+            presenter.clockList();
+        }
+        setLocate();
 
     }
 
@@ -251,19 +243,30 @@ public class ClockFragment extends BaseFragment implements PermissionListener {
     protected void submitDataSuccess(Object data) {
         list.clear();
         list = (List<ClockTwoTo>) data;
-        if (list.size() == 0) {//一次未打卡
+        if (list.size() == 0) {
+            //一次未打卡
             timeOn.setText("上班未打卡");
             timeoff.setText("下班未打卡");
             clock.setText("上班打卡");
-        } else if (list.size() == 1) {//上次打卡是上班卡
+        } else if (list.size() == 1) {
+            //上次打卡是上班卡
             timeOn.setText("上班打卡时间  " + list.get(0).getCreated_at());
             timeoff.setText("下班未打卡");
             clock.setText("下班打卡");
-        } else {//上次打卡是下班卡
+        } else {
+            //上次打卡是下班卡
             timeOn.setText("上班打卡时间  " + list.get(1).getCreated_at());
             timeoff.setText("下班打卡时间  " + list.get(0).getCreated_at());
             clock.setText("上班打卡");
         }
 
     }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        mLocationClient.stopLocation();
+
+    }
+
 }

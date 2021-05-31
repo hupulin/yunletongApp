@@ -47,9 +47,7 @@ public class ApiClient {
     private long time = System.currentTimeMillis();
 //    public static final String baseUrl="https://webdev.fangsheng.tech/";//方升外网测试
     private String baseUrl = Constant.BaseUrl;
-
-        private int[] certificates = {R.raw.ifishfun};
-//    private int[] certificates = {R.raw.fangsheng};
+        private int[] certificates ={ Constant.isOnline?R.raw.ifishfun:R.raw.fangsheng};
 
 //
 

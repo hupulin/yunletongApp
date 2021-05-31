@@ -1,9 +1,12 @@
 package com.example.yule.login.presenter;
 
 import android.graphics.Bitmap;
+import android.util.Log;
 
+import com.example.yule.login.AuthenticationActivity;
 import com.fskj.applibrary.api.ApiClient;
 import com.fskj.applibrary.api.LoginApi;
+import com.fskj.applibrary.api.TicketApi;
 import com.fskj.applibrary.base.BaseActivity;
 import com.fskj.applibrary.base.BasePresenter;
 import com.fskj.applibrary.base.MyObserver;
@@ -34,7 +37,6 @@ public class AuthenticationPresenter extends BasePresenter {
 
 //type
     public void upLoadIdCard(String type,String path) {
-
 //      File file = saveBitmapFile(ImageCompressUtil.compressPixel(path), path);
         File file  =new File(path);
         showLoadingDialog();
@@ -77,6 +79,26 @@ public class AuthenticationPresenter extends BasePresenter {
                     getDataSuccess(msg);
                 }else{
                     showMessage((String) msg.getData());
+                }
+            }
+        });
+    }
+    public void uploadPic(String imagePath) {
+        showLoadingDialog();
+        File file = new File(imagePath);
+        RequestBody requestFile = RequestBody.create(MediaType.parse("multipart/form-data"), file);
+        MultipartBody.Part body = MultipartBody.Part.createFormData("img", file.getName(), requestFile);
+        ApiClient.create(LoginApi.class).upLoadPic(body).observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.newThread()).subscribe(new MyObserver<MessageTo>(this) {
+            @Override
+            public void onNext(MessageTo msg) {
+                if (file.isFile() && file.exists()) {
+                    file.delete();
+                }
+                if (msg.getError_code() == 0) {
+                    ((AuthenticationActivity)activity).upLoadPicSuccess();
+                } else {
+                    String ss = (String) msg.getData();
+                    showMessage(ss);
                 }
             }
         });

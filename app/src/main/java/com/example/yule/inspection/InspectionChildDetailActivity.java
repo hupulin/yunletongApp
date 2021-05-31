@@ -16,6 +16,8 @@ import com.fskj.applibrary.domain.inspection.InspectionRecordTo;
 import com.squareup.picasso.Picasso;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -46,27 +48,27 @@ public class InspectionChildDetailActivity extends BaseActivity {
     private void initView() {
         setTitleName("巡查详情");
         model= (InspectionRecordTo.DataBean.BoxInfoBean) getIntent().getSerializableExtra("model");
-        floor.setText("巡查楼层    "+model.getFloor_name());
-        result.setText("巡查结果    "+model.getType_name());
+        floor.setText("巡查楼层     "+model.getFloor_name());
+        result.setText("巡查结果     "+model.getType_name());
         if(!TextUtils.isEmpty(model.getRemarks())){
             remark.setText(model.getRemarks());
         }else{
             remark.setText("暂无");
         }
+        ArrayList<String> list =new ArrayList<>();
+        for (int i = 0; i < model.getImg_info().size(); i++) {
+            list.add(model.getImg_info().get(i).getImg_url());
+        }
         if(model.getImg_info().size()>0){
             for (int i = 0; i <model.getImg_info().size() ; i++) {
-                String pathList = "";
                 ImageView imageView = new ImageView(this);
-                pathList = pathList + model.getImg_info().get(i).getImg_url() + ";";
                 imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-                String finalPathList = pathList;
-//                displayImage(imageView,Constant.IMG_BASE_URL+model.getImg_info().get(i).getImg_url());
                 Picasso.get().load(Constant.IMG_BASE_URL+model.getImg_info().get(i).getImg_url()).into(imageView);
                 imageView.setTag(model.getImg_info().get(i).getImg_url());
                 imageView.setOnClickListener(view -> {
                     Intent intent = new Intent(this, PostImageDetailActivity.class);
                     intent.putExtra("CurrentPath", (String) view.getTag());
-                    intent.putExtra("PathList", (Serializable) finalPathList.substring(0, finalPathList.length() - 1));
+                    intent.putStringArrayListExtra("PathList",  list);
                     startActivity(intent);
                     goToAnimation(1);
                 });

@@ -53,12 +53,12 @@ public class InspectionListFragment extends BaseFragment {
 
     private void initView() {
         title.setText("巡查记录");
-        presenter = new InspectionListPresenter(this );
+//        presenter = new InspectionListPresenter(getActivity());
         InspectionAdapter adapter = new InspectionAdapter(getActivity());
         adapter.setOnItemClickListener(new InspectionAdapter.OnItemLongClickListener() {
             @Override
             public void itemLongClick(InspectionRecordTo.DataBean mode, int position) {
-                showMessage("长按删除");
+//                showMessage("长按删除");
             }
         });
         setRecycleView(adapter, recyclerView, presenter, true, true, noData);
@@ -73,7 +73,7 @@ public class InspectionListFragment extends BaseFragment {
 
     }
     private void showLogOutDialog() {
-        NiftyDialogBuilder dialog = TipsDialog.show(getActivity(), "确定退出登录");
+        NiftyDialogBuilder dialog = TipsDialog.show(getActivity(), "提示");
         TextView confirm = dialog.findViewById(R.id.confirm);
         TextView cancel = dialog.findViewById(R.id.cancel);
         confirm.setText("取消");

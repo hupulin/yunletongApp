@@ -47,13 +47,17 @@ public class SelectRoomActivity extends BaseActivity   implements PermissionList
     private void showPopWindow() {
         InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
         if (imm != null) imm.hideSoftInputFromWindow(getWindow().getDecorView().getWindowToken(), 0);
-        SelectRoomPopWindow mSelectRoomPopWindow = new SelectRoomPopWindow(SelectRoomActivity.this,model);
-        mSelectRoomPopWindow.showAtLocation(roomName, Gravity.BOTTOM, 0, 0);
-        mSelectRoomPopWindow.setAddresskListener((code, roomStr) -> {
-//            showMessage(code+roomStr+"hahaahh");
-            roomName.setText(roomStr);
-            roomId=code;
-        });
+        if(model.size()>0){
+            SelectRoomPopWindow mSelectRoomPopWindow = new SelectRoomPopWindow(SelectRoomActivity.this,model);
+            mSelectRoomPopWindow.showAtLocation(roomName, Gravity.BOTTOM, 0, 0);
+            mSelectRoomPopWindow.setAddresskListener((code, roomStr) -> {
+                roomName.setText(roomStr);
+                roomId=code;
+            });
+
+        }else{
+           showMessage("请先配置企业房间号   ");
+        }
 
     }
     SelectRoomPresenter presenter;

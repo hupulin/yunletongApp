@@ -12,6 +12,7 @@
     android:layout_height="wrap_content">
     <include layout="@layout/title_layout" />
     <RelativeLayout
+        android:id="@+id/price_layout"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:background="@color/white">
@@ -220,6 +221,7 @@
 
     </RelativeLayout>
     <RelativeLayout
+        android:visibility="gone"
         android:id="@+id/weChat_layout"
         android:layout_width="match_parent"
         android:layout_height="60dp"
@@ -254,6 +256,8 @@
 
     </RelativeLayout>
     <RelativeLayout
+        android:visibility="gone"
+
         android:id="@+id/balance_layout"
         android:layout_width="match_parent"
         android:layout_height="60dp"

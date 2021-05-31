@@ -5,14 +5,13 @@ android {
     defaultConfig {
         applicationId "com.example.yule"
         minSdkVersion 19
-        targetSdkVersion 26
-
-        versionCode 1
-        versionName "1.0.0.0001"
+        targetSdkVersion 27
+        versionCode 5
+        versionName "2.0.3"
         multiDexEnabled true
-
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-        javaCompileOptions { annotationProcessorOptions { includeCompileClasspath = true } }
+            javaCompileOptions { annotationProcessorOptions { includeCompileClasspath = true } }
+
     }
     dataBinding {
         enabled = true
@@ -27,7 +26,11 @@ android {
     }
     buildTypes {
         release {
+            // 启用代码收缩、混淆和优化。
             minifyEnabled false
+            // 启用资源缩减
+            shrinkResources false
+//            minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
         debug {

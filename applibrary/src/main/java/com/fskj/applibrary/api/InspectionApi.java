@@ -41,7 +41,7 @@ public interface InspectionApi {
      * 获取巡查类型
      */
     @POST("api/inspection/getAllInspectionType")
-    Observable<MessageTo<List<InspectionTypeTo>>> getAllInspectionType();
+    Observable<MessageTo<List<InspectionTypeTo>>> getAllInspectionType();// 接口定义一个方法 放回数据嵌套到一个Observable 被观察者 里面
     /**
      * 某一次巡查添加巡查记录
      */

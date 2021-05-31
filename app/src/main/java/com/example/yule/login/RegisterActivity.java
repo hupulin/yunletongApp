@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import com.example.yule.R;
 import com.example.yule.login.presenter.RegisterPresenter;
+import com.example.yule.web.StaticWebViewActivity;
 import com.fskj.applibrary.base.BaseActivity;
 import com.fskj.applibrary.domain.MessageTo;
 import com.fskj.applibrary.util.AlertDialog;
@@ -53,9 +54,9 @@ public class RegisterActivity extends BaseActivity {
 //        codeLogin.getPaint().setFlags(Paint.UNDERLINE_TEXT_FLAG); //下划线
     }
 
-    boolean isSelect = true;
+    boolean isSelect = false;
 
-    @OnClick({R.id.login, R.id.register, R.id.select_check})
+    @OnClick({R.id.login, R.id.register, R.id.select_check, R.id.agreement, R.id.to_agreement})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.login:
@@ -63,6 +64,13 @@ public class RegisterActivity extends BaseActivity {
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
                 goToAnimation(2);
+                break;
+                case R.id.agreement:
+                case R.id.to_agreement:
+                    intent = new Intent(this, StaticWebViewActivity.class);
+                    intent.putExtra("Title", "服务协议及隐私协议");
+                    intent.putExtra("Url", "user/agreement");
+                    startActivity(intent);
                 break;
             case R.id.select_check:
                 if (isSelect) {
@@ -108,7 +116,7 @@ public class RegisterActivity extends BaseActivity {
         } else if (msg.getError_code() == 1) {
             NiftyDialogBuilder dialog = AlertDialog.show(RegisterActivity.this, "账号已注册");
             TextView confirm = dialog.findViewById(R.id.confirm);
-            confirm.setText("去登陆");
+            confirm.setText("去登录");
             confirm.setOnClickListener(v1 -> {
                 Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

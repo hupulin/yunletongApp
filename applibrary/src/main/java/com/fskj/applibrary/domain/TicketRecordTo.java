@@ -100,7 +100,7 @@ public class TicketRecordTo {
         private String ticket_use_at;
         private String ticket_sat_at;
         private Object room_id;
-        private Object room_name;
+        private String room_name;
 
 
     }

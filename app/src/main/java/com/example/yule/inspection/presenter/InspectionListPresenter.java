@@ -2,6 +2,7 @@ package com.example.yule.inspection.presenter;
 
 import com.fskj.applibrary.api.ApiClient;
 import com.fskj.applibrary.api.InspectionApi;
+import com.fskj.applibrary.base.BaseActivity;
 import com.fskj.applibrary.base.BaseFragment;
 import com.fskj.applibrary.base.BasePresenter;
 import com.fskj.applibrary.base.MyObserver;
@@ -21,7 +22,7 @@ import rx.schedulers.Schedulers;
  * Email:635768909@qq.com
  */
 public class InspectionListPresenter extends BasePresenter {
-    public InspectionListPresenter(BaseFragment activity) {
+    public InspectionListPresenter(BaseActivity activity) {
         initContext(activity);
     }
 List<InspectionRecordTo.DataBean> list= new ArrayList<>();

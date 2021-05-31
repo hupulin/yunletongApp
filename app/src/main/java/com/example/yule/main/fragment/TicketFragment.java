@@ -90,39 +90,39 @@ public class TicketFragment extends BaseFragment {
         TicketTotal model = (TicketTotal) data;
         unUse.setText("未用" + model.getSelect_new() + "张");
         used.setText("已用" + model.getSelect_used() + "张");
-        refund.setText("已退" + model.getSelect_refund() + "张");
+//        refund.setText("已退" + model.getSelect_refund() + "张");
         invalid.setText("失效" + model.getSelect_cancle() + "张");
     }
 
     TicketListFragment Fragment1;
     TicketListFragment Fragment2;
-    TicketListFragment Fragment3;
+//    TicketListFragment Fragment3;
     TicketListFragment Fragment4;
 
     private void initFragment() {
         FragmentPagerAdapter adapter = new FragmentAdapter(getChildFragmentManager(), fragmentList);
         Fragment1 = new TicketListFragment(0,this);
         Fragment2 = new TicketListFragment(1,this);
-        Fragment3 = new TicketListFragment(2,this);
+//        Fragment3 = new TicketListFragment(2,this);
         Fragment4 = new TicketListFragment(3,this);
 
         fragmentList.add(Fragment1);
         fragmentList.add(Fragment2);
-        fragmentList.add(Fragment3);
+//        fragmentList.add(Fragment3);
         fragmentList.add(Fragment4);
         viewPager.setOffscreenPageLimit(4);
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float v, @Px int i1) {
-                moveLine.setX(getScreenWidth() / 4 * position + i1 / 4);
+                moveLine.setX(getScreenWidth() / 3 * position + i1 / 3);
             }
 
             @Override
             public void onPageSelected(int position) {
                 unUse.setTextColor(position == 0 ? Color.parseColor("#7165E3") : Color.parseColor("#303030"));
                 used.setTextColor(position == 1 ? Color.parseColor("#7165E3") : Color.parseColor("#303030"));
-                refund.setTextColor(position == 2 ? Color.parseColor("#7165E3") : Color.parseColor("#303030"));
-                invalid.setTextColor(position == 3 ? Color.parseColor("#7165E3") : Color.parseColor("#303030"));
+//                refund.setTextColor(position == 2 ? Color.parseColor("#7165E3") : Color.parseColor("#303030"));
+                invalid.setTextColor(position == 2 ? Color.parseColor("#7165E3") : Color.parseColor("#303030"));
             }
 
             @Override
@@ -133,7 +133,7 @@ public class TicketFragment extends BaseFragment {
 
     }
 
-    @OnClick({R.id.un_use, R.id.used, R.id.refund, R.id.select, R.id.invalid})
+    @OnClick({R.id.un_use, R.id.used, R.id.select, R.id.invalid})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.un_use:
@@ -142,11 +142,11 @@ public class TicketFragment extends BaseFragment {
             case R.id.used:
                 viewPager.setCurrentItem(1, false);
                 break;
-            case R.id.refund:
-                viewPager.setCurrentItem(2, false);
-                break;
+//            case R.id.refund:
+//                viewPager.setCurrentItem(2, false);
+//                break;
             case R.id.invalid:
-                viewPager.setCurrentItem(3, false);
+                viewPager.setCurrentItem(2, false);
                 break;
             case R.id.select:
                 showList();
@@ -210,8 +210,8 @@ public class TicketFragment extends BaseFragment {
                 selectId = list.get(position).getId();
                 Fragment1.getData(selectId);
                 Fragment2.getData(selectId);
-                Fragment3.getData(selectId);
-                Fragment3.getData(selectId);
+//                Fragment3.getData(selectId);
+                Fragment4.getData(selectId);
                 presenter.getTicketTotal(selectId);
                 for (int i = 0; i < list.size(); i++) {
                     list.get(i).setCheck(false);

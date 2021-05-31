@@ -1,6 +1,7 @@
 package com.example.yule.main.presenter;
 
 import android.graphics.Bitmap;
+import android.util.Log;
 
 import com.example.yule.main.fragment.ClockFragment;
 import com.fskj.applibrary.api.ApiClient;
@@ -38,24 +39,22 @@ public class ClockPresenter extends BasePresenter {
     }
 
     public void clockList() {
-//        param.setPassword(psw);
         showLoadingDialog();
         ApiClient.create(TicketApi.class).getClockTowList().observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.newThread()).subscribe(new MyObserver<MessageTo<List<ClockTwoTo>>>(this) {
             @Override
             public void onNext(MessageTo<List<ClockTwoTo>>  msg) {
-                dismissLoadingDialog();
+//                dismissLoadingDialog();
                 submitDataSuccess(msg.getData());
             }
         });
     }
 
     public void clockOn() {
-        showLoadingDialog();
+//        showLoadingDialog();
         ApiClient.create(TicketApi.class).clockOn(param).observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.newThread()).subscribe(new MyObserver<MessageTo>(this) {
             @Override
             public void onNext(MessageTo msg) {
                 dismissLoadingDialog();
-
                 if (msg.getError_code() == 0) {
                     showMessage("打卡成功");
                     clockList();
@@ -63,8 +62,6 @@ public class ClockPresenter extends BasePresenter {
                 } else {
                     showMessage((String) msg.getData());
                 }
-//                if(msg.getError_code()==0){
-//                }
             }
         });
     }
@@ -81,7 +78,6 @@ public class ClockPresenter extends BasePresenter {
         return file;
     }
     public void faceComparison(String imagePath, String address, String latitude, String longitude) {
-        ((ClockFragment)mFragment).showDialog();
         showLoadingDialog();
         param = new ClockParam();
         param.setAddress(address);
@@ -93,8 +89,11 @@ public class ClockPresenter extends BasePresenter {
         ApiClient.create(TicketApi.class).faceComparison(body).observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.newThread()).subscribe(new MyObserver<MessageTo>(this) {
             @Override
             public void onNext(MessageTo msg) {
-                ((ClockFragment)mFragment).dismissDialog();
+                if (file.isFile() && file.exists()) {
+                    file.delete();
+                }
                 if (msg.getError_code() == 0) {
+
                     if ((boolean) msg.getData()) {
                         clockOn();
                     } else {

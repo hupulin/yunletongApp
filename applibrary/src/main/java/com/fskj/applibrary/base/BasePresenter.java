@@ -43,14 +43,14 @@ public class BasePresenter<T> implements MiotPlatformUIListener {
 
 
     protected void showMessage(String message) {
-        dismissLoadingDialog();
+//        dismissLoadingDialog();
         if (message == null)
             message = "";
         Toast.makeText(MainApp.appContext, message, Toast.LENGTH_LONG).show();
     }
 
     protected void submitDataSuccess(Object data) {
-        dismissLoadingDialog();
+//        dismissLoadingDialog();
         if (activity != null)
             activity.submitDataSuccess(data);
         else
@@ -58,7 +58,7 @@ public class BasePresenter<T> implements MiotPlatformUIListener {
     }
 
     protected void getDataSuccess(T data) {
-        dismissLoadingDialog();
+//        dismissLoadingDialog();
         if (activity != null)
             activity.loadDataSuccess(data);
         else

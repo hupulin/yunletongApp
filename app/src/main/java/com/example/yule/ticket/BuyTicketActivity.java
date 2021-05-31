@@ -73,8 +73,7 @@ public class BuyTicketActivity extends BaseActivity {
     public void loadDataSuccess(Object data) {
         super.loadDataSuccess(data);
         userInfoTo=userInfoHelp.getUserInfo();
-        balance.setText("(余额￥" + userInfoTo.getAccount() / 100.0+")");
-
+        setView();
     }
 
     @Override
@@ -83,23 +82,30 @@ public class BuyTicketActivity extends BaseActivity {
         EventBus.getDefault().unregister(this);
 
     }
+    private String  price;
+private  void setView(){
+    unitPrice = userInfoTo.getCompany().getCost_per_day() / 100.0;
+    balance.setText("(余额￥" + userInfoTo.getAccount() / 100.0+")");
+    unitPrice = userInfoTo.getCompany().getCost_per_day() / 100.0;
+    tvUnitPrice.setText("￥" + unitPrice);
+    total = (((double) payNum) * (double) userInfoTo.getCompany().getCost_per_day()) / 100;
+    tvtTotal.setText("￥" + String.valueOf(total));
+    tvCompanyName.setText(userInfoTo.getCompany().getName());
+    tvManageName.setText(userInfoTo.getFid_user().getNickname());
+    price=userInfoTo.getCompany().getClass_name();
 
+}
     private void initData() {
         EventBus.getDefault().register(this);
         setTitleName("购票");
         presenter = new BuyTicketPresenter(this);
         presenter.getUserInfo();
-        unitPrice = userInfoTo.getCompany().getCost_per_day() / 100.0;
-        tvUnitPrice.setText("￥" + unitPrice);
-        total = (((double) payNum) * (double) userInfoTo.getCompany().getCost_per_day()) / 100;
-        tvtTotal.setText("￥" + String.valueOf(total));
-        tvCompanyName.setText(userInfoTo.getCompany().getName());
-        tvManageName.setText(userInfoTo.getFid_user().getNickname());
+        setView();
 
 
     }
 
-    @OnClick({R.id.ali_layout, R.id.weChat_layout, R.id.balance_layout, R.id.reduce, R.id.add, R.id.confirm,})
+    @OnClick({R.id.ali_layout, R.id.weChat_layout,  R.id.price_layout, R.id.balance_layout, R.id.reduce, R.id.add, R.id.confirm,})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.ali_layout:
@@ -110,6 +116,9 @@ public class BuyTicketActivity extends BaseActivity {
                     balanceSelect.setVisibility(View.GONE);
                 }
 
+                break;
+            case R.id.price_layout:
+                showMessage("当前票类型："+price);
                 break;
             case R.id.weChat_layout:
                 if (payType != 2) {

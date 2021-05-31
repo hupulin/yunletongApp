@@ -1,7 +1,6 @@
 apply plugin: 'com.android.library'
 android {
     compileSdkVersion 27
-    buildToolsVersion "28.0.2"
 
     defaultConfig {
         minSdkVersion 19
@@ -62,7 +61,6 @@ dependencies {
     api 'com.ruffian.library:RTextView:1.0.10'
 //    api 'com.Cropsoundcloud.android:android-crop:1.0.1@aar'
     api 'com.soundcloud.android:android-crop:1.0.1@aar'
-
     api 'com.github.sd6352051.niftydialogeffects:niftydialogeffects:1.0.0@aar'
     api 'com.chenlittleping:recyclercoverflow:1.0.6'
     api 'com.jiechic.library:xUtils:2.6.14'

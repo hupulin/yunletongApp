@@ -1,5 +1,6 @@
 package com.example.yule.ticket;
 
+import android.annotation.SuppressLint;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
@@ -17,6 +18,9 @@ import com.fskj.applibrary.domain.main.TicketTo;
 import com.fskj.applibrary.util.AlertDialog;
 import com.gitonway.lee.niftymodaldialogeffects.lib.NiftyDialogBuilder;
 import com.yzq.zxinglibrary.encode.CodeCreator;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -53,25 +57,28 @@ public class TicketDetailActivity extends BaseActivity {
         initData();
     }
 
+
+
     @Override
     protected void onDestroy() {
         super.onDestroy();
         handler.removeCallbacksAndMessages(null);
     }
 
+    @SuppressLint("SetTextI18n")
     private void initData() {
         presenter = new TicketDetailPresenter(this);
         setTitleName("电子票");
-        rightName.setText("退票");
+//        rightName.setText("退票");
         model = (TicketTo) getIntent().getSerializableExtra("mode");
-        Glide.with(appContext).load(userInfoHelp.getUserInfo().getHeadimg()) .placeholder(R.mipmap.use_image).into(headImage);
+        Glide.with(appContext).load(userInfoHelp.getUserInfo().getHeadimg()).placeholder(R.mipmap.use_image).into(headImage);
         userName.setText(userInfoHelp.getUserInfo().getNickname());
         imgCode.setBackground(new BitmapDrawable(getResources(), Create2DCode(model.getCode())));
         adminName.setText(model.getAdmin_name() + "  " + model.getMid_to_name());
         presenter.getTicketStatus(model.getCode());
     }
 
-    @OnClick({R.id.right_name,R.id.code,})
+    @OnClick({R.id.right_name, R.id.result,})
     public void onViewClicked(View view) {
 
         switch (view.getId()) {
@@ -79,33 +86,33 @@ public class TicketDetailActivity extends BaseActivity {
 //                presenter.refundTicket(model.getCode());
                 showDialog();
                 break;
-                case R.id.code:
+            case R.id.result:
 //                presenter.refundTicket(model.getCode());
-                    onBackPressed();
+                onBackPressed();
 //                showDialog();
                 break;
         }
     }
-    Handler handler=new Handler(){};
 
-    public void getStatusSuccess(String status ) {
-        if("1".equals(status)){
+    @SuppressLint("HandlerLeak")
+    Handler handler = new Handler() {
+    };
+
+    public void getStatusSuccess(String status) {
+        if ("1".equals(status)) {
             handler.removeCallbacksAndMessages(null);
             code.setVisibility(View.GONE);
             result.setVisibility(View.VISIBLE);
             rightName.setVisibility(View.GONE);
-        }else{
-            handler.postDelayed(new Runnable(){
-                public void run() {
-               presenter.getTicketStatus(model.getCode());
-                }
-            }, 4000);
+        } else {
+            handler.postDelayed(() -> presenter.getTicketStatus(model.getCode()), 4000);
             result.setVisibility(View.GONE);
             code.setVisibility(View.VISIBLE);
         }
     }
 
     NiftyDialogBuilder dialog;
+
     public void showDialog() {
         dialog = AlertDialog.show(TicketDetailActivity.this, "票款金额会退回到账户余额");
         TextView confirm = dialog.findViewById(R.id.confirm);
@@ -120,8 +127,8 @@ public class TicketDetailActivity extends BaseActivity {
         finish();
     }
 
-    public  Bitmap Create2DCode(String str) {
-        return    CodeCreator.createQRCode(str, 400, 400, null);
+    public Bitmap Create2DCode(String str) {
+        return CodeCreator.createQRCode(str, 400, 400, null);
         //生成二维矩阵,编码时要指定大小,
         //不要生成了图片以后再进行缩放,以防模糊导致识别失败
 //        try {

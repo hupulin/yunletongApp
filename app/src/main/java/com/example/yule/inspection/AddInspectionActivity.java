@@ -3,6 +3,7 @@ package com.example.yule.inspection;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.EditText;
@@ -66,29 +67,23 @@ public class AddInspectionActivity extends BaseActivity implements UploadImageLi
         presenter = new AddInspectionPresenter(this);
         presenter.getAllInspectionType();
         setPostImageLayout(imageLayout, getScreenWidth() * 308 / 3 / 414, 9);
-
     }
-
     AddInspectionParam param = new AddInspectionParam();
-
     private void createParam() {
         param.setFloorName(etFloor.getText().toString().trim());
-        param.setInspectionResult("你好");
+        param.setInspectionResult(strString);
         if (!TextUtils.isEmpty(content.getText().toString().trim())) {
             param.setRemarks(content.getText().toString().trim());
         }
         param.setBox_involve(intString.substring(0, intString.length() - 1));
         param.setInspectionId(getIntent().getIntExtra("id", 0));
     }
-
     @Override
     public void uploadImageSuccess(String path) {
-//
         createParam();
         param.setBoxImg(Arrays.asList(path.split(";")));
         presenter.addInspection(param);
     }
-
     @Override
     protected void submitDataSuccess(Object data) {
         showMessage("添加成功");
@@ -173,6 +168,7 @@ public class AddInspectionActivity extends BaseActivity implements UploadImageLi
 
     private boolean isNormal;
     String intString;
+    String strString="";
 
     private void showNormalType() {
         new ChooseListDialog()
@@ -192,11 +188,12 @@ public class AddInspectionActivity extends BaseActivity implements UploadImageLi
                         tvNormal.setText(chooseData);
                         intString = "";
                         String[] normalList = chooseData.replaceAll("\\s*", "").split(",");
-//                        String[] normalList = chooseData.split(",");
+                        strString=chooseData.replaceAll("\\s*", "");
                         for (int i = 0; i < normalList.length; i++) {
                             for (int j = 0; j < list.size(); j++) {
                                 if (normalList[i].equals(list.get(j).getName())) {
                                     intString = intString + list.get(j).getId() + ",";
+                                    strString=strString+list.get(j).getName()+",";
                                 }
                             }
                         }
@@ -225,6 +222,7 @@ public class AddInspectionActivity extends BaseActivity implements UploadImageLi
                         String chooseData = Arrays.toString(chooseResult.getChooseItems()).replace("[", "").replace("]", "");
                         tvNormal.setText(chooseData);
                         intString = "";
+                        strString=chooseData.replaceAll("\\s*", "");
                         String[] normalList = chooseData.replaceAll("\\s*", "").split(",");
                         for (int i = 0; i < normalList.length; i++) {
                             for (int j = 0; j < list.size(); j++) {
@@ -233,6 +231,7 @@ public class AddInspectionActivity extends BaseActivity implements UploadImageLi
                                 }
                             }
                         }
+
                         tvAbnormal.setText(chooseData);
                         tvNormal.setHint("点击选择");
                         tvNormal.setText("");

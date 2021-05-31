@@ -1,6 +1,9 @@
 package com.fskj.applibrary.util;
 
 import android.content.Context;
+import android.text.SpannableString;
+import android.text.method.LinkMovementMethod;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -40,6 +43,22 @@ public class TipsDialog {
         dialogBuilder.show();
         cancel.setOnClickListener(v -> dialogBuilder.dismiss());
         dialogBuilder.findViewById(R.id.parent).setOnClickListener(v -> dialogBuilder.dismiss());
+        return dialogBuilder;
+    }
+
+    public static NiftyDialogBuilder showTitle(Context context, SpannableString title, String titleName){
+        dialogBuilder = NiftyDialogBuilder.getInstance(context);
+        dialogBuilder.setContentView(R.layout.dialog_alert);
+        cancel = dialogBuilder.findViewById(R.id.cancel);
+        TextView  tvtTitleName = dialogBuilder.findViewById(R.id.title_name);
+        TextView tipText= dialogBuilder.findViewById(R.id.title);
+        tipText.setText(title);
+        tipText.setGravity(Gravity.START);
+        tipText.setMovementMethod(LinkMovementMethod.getInstance());
+        tvtTitleName.setText(titleName);
+        dialogBuilder.show();
+        cancel.setOnClickListener(v -> dialogBuilder.dismiss());
+//        dialogBuilder.findViewById(R.id.parent).setOnClickListener(v -> dialogBuilder.dismiss());
         return dialogBuilder;
     }
 

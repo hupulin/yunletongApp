@@ -228,7 +228,7 @@ public class BaseActivity<T> extends FragmentActivity implements FragmentPermiss
                 startActivityForResult(intent, 10);
             } else {
                 PhotoPreviewIntent intent = new PhotoPreviewIntent(appContext);
-                intent.setCurrentItem(0);
+                intent.setCurrentItem((Integer) view.getTag());
                 intent.setPhotoPaths(imagePaths);
                 startActivityForResult(intent, 20);
             }

@@ -67,7 +67,7 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="51dp"
-            android:text="哈哈哈" />
+            android:text="" />
 
         <View
             android:layout_width="24dp"

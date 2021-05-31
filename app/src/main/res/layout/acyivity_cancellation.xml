@@ -85,7 +85,7 @@
             android:layout_width="25dp"
             android:layout_height="25dp">
             <View
-                android:background="@mipmap/select_on"
+                android:background="@mipmap/select_no"
                 android:id="@+id/select"
                 android:layout_centerInParent="true"
                 android:layout_gravity="center_horizontal"

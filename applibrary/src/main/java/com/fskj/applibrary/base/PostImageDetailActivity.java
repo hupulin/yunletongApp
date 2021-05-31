@@ -13,6 +13,9 @@ import com.bm.library.PhotoView;
 import com.bumptech.glide.Glide;
 import com.fskj.applibrary.R;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 /**
  * Created by xzz on 2017/7/1.
@@ -20,7 +23,7 @@ import com.fskj.applibrary.R;
 
 public class PostImageDetailActivity extends BaseActivity {
 
-    private String[] paths;
+    private List<String> paths=new ArrayList();
     private ViewPager viewPager;
 
 
@@ -37,16 +40,16 @@ public class PostImageDetailActivity extends BaseActivity {
     private void getIntentData() {
 
         String currentPath = getIntent().getStringExtra("CurrentPath");
-        String pathList = getIntent().getStringExtra("PathList");
-        paths = pathList.contains(";") ? pathList.split(";") : pathList.split(",");
+        paths = getIntent().getStringArrayListExtra("PathList");
+//        paths = pathList.contains(";") ? pathList.split(";") : pathList.split(",");
         viewPager.setAdapter(adapter);
-        for (int i = 0; i < paths.length; i++) {
-            if (currentPath.equals(paths[i])) {
+        for (int i = 0; i < paths.size(); i++) {
+            if (currentPath.equals(paths.get(i))) {
                 viewPager.setCurrentItem(i);
-                setTitleName(i + 1 + "/" + paths.length);
+                setTitleName(i + 1 + "/" + paths.size());
             }
         }
-        setViewPagerListener(paths.length);
+        setViewPagerListener(paths.size());
     }
 
     private void setViewPagerListener(int length) {
@@ -72,7 +75,7 @@ public class PostImageDetailActivity extends BaseActivity {
     PagerAdapter adapter = new PagerAdapter() {
         @Override
         public int getCount() {
-            return paths.length;
+            return paths.size();
         }
 
         @Override
@@ -88,7 +91,7 @@ public class PostImageDetailActivity extends BaseActivity {
             view.enable();
 //            view.setScaleType(ImageView.ScaleType.FIT_XY);
             view.setTransitionName("LifeImage");
-            Glide.with(appContext).load(Constant.IMG_BASE_URL+paths[position] + (paths[position].contains("Camera") ? "" : "?imageMogr2/thumbnail/500x")).into(view);
+            Glide.with(appContext).load(Constant.IMG_BASE_URL+paths.get(position) + (paths.get(position).contains("Camera") ? "" : "?imageMogr2/thumbnail/500x")).into(view);
             container.addView(mView);
             return mView;
         }

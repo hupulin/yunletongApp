@@ -57,7 +57,7 @@
           android:layout_width="25dp"
           android:layout_height="25dp">
           <View
-              android:background="@mipmap/select_on"
+              android:background="@mipmap/select_no"
               android:id="@+id/select"
               android:layout_centerInParent="true"
               android:layout_gravity="center_horizontal"
@@ -66,13 +66,15 @@
               />
       </RelativeLayout>
       <TextView
+          android:id="@+id/to_agreement"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:layout_gravity="center_vertical"
-          android:text="已阅读"
+          android:text="注册账号即默认同意"
           android:textColor="@color/text_black"
           android:textSize="13sp" />
       <TextView
+          android:id="@+id/agreement"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:layout_gravity="center_vertical"

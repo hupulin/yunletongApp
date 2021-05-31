@@ -9,8 +9,8 @@
 
 
     <RelativeLayout
-        android:layout_width="316dp"
-        android:layout_marginTop="240dp"
+        android:layout_width="324dp"
+        android:layout_marginTop="250dp"
         android:layout_centerHorizontal="true"
         android:layout_height="wrap_content">
 
@@ -18,7 +18,7 @@
         <RelativeLayout
             android:focusable="true"
             android:focusableInTouchMode="true"
-            android:layout_marginTop="14dp"
+            android:layout_marginTop="18dp"
             android:background="@drawable/around_10_withe"
             android:layout_centerHorizontal="true"
             android:layout_width="288dp"

@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <include layout="@layout/title_layout" />
+    <com.fskj.applibrary.util.PingFangTextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="38dp"
+        android:text="完善信息"
+        android:textColor="@color/text_black"
+        android:textSize="35sp" />
+
+    <EditText
+        android:id="@+id/height"
+        android:layout_width="340dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="33dp"
+        android:background="@drawable/login_bg"
+        android:hint="身高"
+        android:maxLength="13"
+        android:paddingLeft="29dp"
+        android:textColor="@color/text_black"
+        android:textColorHint="@color/text_black"
+        android:textSize="15sp" />
+    <EditText
+        android:id="@+id/weight"
+        android:layout_width="340dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/login_bg"
+        android:hint="体重"
+        android:maxLength="13"
+        android:paddingLeft="29dp"
+        android:textColor="@color/text_black"
+        android:textColorHint="@color/text_black"
+        android:textSize="15sp" />
+    <EditText
+        android:id="@+id/marital_status"
+        android:layout_width="340dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/login_bg"
+        android:hint="婚姻状况"
+        android:maxLength="13"
+        android:paddingLeft="29dp"
+        android:textColor="@color/text_black"
+        android:textColorHint="@color/text_black"
+        android:textSize="15sp" />
+    <EditText
+        android:id="@+id/emergency_contact"
+        android:layout_width="340dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/login_bg"
+        android:hint="紧急联系人"
+        android:maxLength="13"
+        android:paddingLeft="29dp"
+        android:textColor="@color/text_black"
+        android:textColorHint="@color/text_black"
+        android:textSize="15sp" />
+    <EditText
+        android:id="@+id/emergency_contact_phone"
+        android:layout_width="340dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/login_bg"
+        android:hint="紧急联系人电话"
+        android:maxLength="13"
+        android:paddingLeft="29dp"
+        android:textColor="@color/text_black"
+        android:textColorHint="@color/text_black"
+        android:textSize="15sp" />
+    <EditText
+        android:id="@+id/address"
+        android:layout_width="340dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/login_bg"
+        android:hint="现住地址"
+        android:maxLength="13"
+        android:paddingLeft="29dp"
+        android:textColor="@color/text_black"
+        android:textColorHint="@color/text_black"
+        android:textSize="15sp" />
+    <EditText
+        android:id="@+id/temporary_residence_num"
+        android:layout_width="340dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/login_bg"
+        android:hint="暂住证"
+        android:maxLength="13"
+        android:paddingLeft="29dp"
+        android:textColor="@color/text_black"
+        android:textColorHint="@color/text_black"
+        android:textSize="15sp" />
+
+    <com.ruffian.library.RTextView
+        android:id="@+id/confirm"
+        android:layout_width="321dp"
+        android:layout_height="55dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="32dp"
+        android:gravity="center"
+        android:text="确  定"
+        android:textColor="@color/white"
+        android:textSize="17sp"
+        app:background_normal="@color/app_color"
+        app:corner_radius="6dp" />
+
+
+</LinearLayout>

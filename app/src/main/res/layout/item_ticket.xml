@@ -48,7 +48,7 @@
                     android:textColor="@color/ticket_gray"
                     android:textSize="14sp" />
                 <TextView
-                    android:layout_marginTop="12dp"
+                    android:layout_marginTop="8dp"
                     android:id="@+id/buy_time"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -56,11 +56,20 @@
                     android:textColor="@color/ticket_gray"
                     android:textSize="14sp" />
                 <TextView
-                    android:layout_marginTop="12dp"
+                    android:layout_marginTop="8dp"
                     android:id="@+id/user_time"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="购买日期 2020-10-20"
+                    android:textColor="@color/ticket_gray"
+                    android:textSize="14sp" />
+                <TextView
+                    android:visibility="gone"
+                    android:layout_marginTop="8dp"
+                    android:id="@+id/result"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="退票原因"
                     android:textColor="@color/ticket_gray"
                     android:textSize="14sp" />
             </LinearLayout>
@@ -81,6 +90,18 @@
                 android:layout_height="72dp"
                 android:layout_alignParentEnd="true"
                 />
+            <TextView
+                android:visibility="gone"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="20dp"
+                android:id="@+id/remark"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="查看备注"
+                android:textColor="@color/app_color"
+                android:textSize="14sp" />
         </RelativeLayout>
 
 

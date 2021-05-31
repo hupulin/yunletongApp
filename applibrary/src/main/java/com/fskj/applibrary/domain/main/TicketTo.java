@@ -21,5 +21,7 @@ public class TicketTo  implements Serializable {
     private String ticket_use_at;//使用或者退票
     private String ticket_sat_at;
     private String room_name;
+    private String sat_reason_type;
+    private String reason ;
 
 }

@@ -2,6 +2,6 @@
     <string name="app_name">云乐通</string>
     <string name="code_link">验证码登录</string>
     <string name="psw_link">密码登录</string>
-    <string name="company_login">企业登录</string>
+    <string name="company_login">公司登录</string>
     <string name="agreement"><u>个人隐私协议和服务条款</u></string>
 </resources>

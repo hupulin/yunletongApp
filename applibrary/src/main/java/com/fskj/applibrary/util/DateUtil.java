@@ -34,6 +34,9 @@ public class DateUtil {
     public final static String mDateTimeFormatStringNoSecondSign = "yyyy年MM月dd日 HH:mm";
     public final static String mDateTimeFormatStringVote = "yyyy年MM月dd日 HH:mm:ss";
     public final static String mWorkDate = "yyyy年MM月dd日";
+
+
+    public final static String mTicket = "yyyy - MM - dd";
     public final static String mRecruitAllDate = "yyyy年MM月dd日 HH:mm";
     public final static String mFormatTimeShort = "HH:mm";
     public final static String mFormatTimeShort2 = "HH";

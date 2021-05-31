@@ -1,62 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<RelativeLayout
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    android:layout_height="wrap_content">
 
 
-<RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="200dp"
-    android:id="@+id/parent"
-    android:layout_alignParentBottom="true"
-    android:alpha="100">
+    <RelativeLayout
+        android:id="@+id/parent"
+        android:layout_width="match_parent"
+        android:layout_height="203dp"
+        android:layout_alignParentBottom="true"
+        android:alpha="100">
 
-
-        <Button
-            android:id="@+id/btn_camera"
+        <LinearLayout
+            android:id="@+id/camera"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/around_10_withe"
             android:layout_width="match_parent"
-            android:text="拍照"
-            android:textSize="15sp"
-            android:layout_above="@+id/line2"
-            android:textColor="@color/dark_color"
-            android:background="@color/white"
-            android:layout_height="40dp" />
+            android:layout_height="111dp"
+            android:orientation="vertical">
 
-        <View
-            android:id="@+id/line2"
-            android:layout_width="match_parent"
-            android:background="#d7d7d7"
-            android:layout_above="@+id/btn_album"
-            android:layout_height="2px"/>
+            <TextView
+                android:id="@+id/btn_camera"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:text="拍照"
+                android:gravity="center"
+                android:textColor="@color/app_color"
+                android:textSize="17sp" />
 
-        <Button
-            android:id="@+id/btn_album"
-            android:layout_above="@+id/line"
-            android:layout_width="match_parent"
-            android:text="相册"
-            android:textSize="15sp"
-            android:textColor="@color/dark_color"
-            android:background="@color/white"
-            android:layout_height="40dp" />
+            <View
+                android:id="@+id/line2"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_above="@+id/btn_album"
+                android:background="#d7d7d7" />
+
+            <TextView
+                android:background="@drawable/around_10_withe"
+                android:gravity="center"
+                android:id="@+id/btn_album"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_above="@+id/line"
+                android:text="相册"
+                android:textColor="@color/app_color"
+                android:textSize="17sp" />
+        </LinearLayout>
+
 
         <View
             android:id="@+id/line"
             android:layout_width="match_parent"
-            android:background="#343434"
-            android:layout_above="@+id/btn_cancel"
-            android:layout_height="7dp"/>
+            android:layout_height="7dp"
+            android:layout_below="@+id/camera"
+     />
 
-        <Button
+        <TextView
+            android:layout_below="@+id/line"
+            android:background="@drawable/around_10_withe"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
             android:id="@+id/btn_cancel"
             android:layout_width="match_parent"
+            android:layout_height="55dp"
             android:text="@string/cancel"
-            android:textSize="15sp"
-            android:layout_alignParentBottom="true"
+            android:gravity="center"
             android:textColor="#97948f"
-            android:background="@color/white"
-            android:layout_height="40dp" />
+            android:textSize="17sp" />
+        <View
+            android:layout_alignParentBottom="true"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+           />
 
-</RelativeLayout>
+    </RelativeLayout>
 </RelativeLayout>

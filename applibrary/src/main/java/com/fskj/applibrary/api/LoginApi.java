@@ -10,6 +10,7 @@ import com.fskj.applibrary.domain.login.LoginParam;
 import com.fskj.applibrary.domain.login.RegisterParam;
 import com.fskj.applibrary.domain.login.UserInfoTo;
 import com.fskj.applibrary.domain.main.CardInfoTo;
+import com.fskj.applibrary.domain.main.FillInfoParam;
 
 import java.util.List;
 
@@ -21,7 +22,12 @@ import retrofit2.http.Part;
 import rx.Observable;
 
 public interface LoginApi {
-
+    /**
+     * 上传图片人脸核身
+     */
+    @Multipart
+    @POST("api/authentication/photoVerification")
+    Observable<MessageTo> upLoadPic(@Part MultipartBody.Part file);
     /**
      * 验证码登录
      */
@@ -109,6 +115,11 @@ public interface LoginApi {
      */
     @POST("api/authentication/startFace")
     Observable<MessageTo<FaceTo>> getFaceCode();
+    /**
+     * 获取人脸code
+     */
+    @POST("/api/u/userInfoSave")
+    Observable<MessageTo> fillInfo(@Body FillInfoParam param);
 
     /**
      * 上传视频人脸比对

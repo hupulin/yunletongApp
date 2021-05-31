@@ -250,7 +250,6 @@ public class UserInfoActivity extends BaseActivity implements PermissionListener
 
     private void beginCrop(Uri source) {
         Uri destination = Uri.fromFile(new File(getCacheDir(), DateUtil.getDateString(DateUtil.mFormatDateShort1) + "croppedd.jpg"));
-
         Crop.of(source, destination).asSquare().start(this);
 
     }

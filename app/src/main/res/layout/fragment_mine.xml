@@ -70,7 +70,7 @@
                     android:layout_marginLeft="23dp"
                     android:layout_marginTop="10dp"
                     android:layout_toRightOf="@+id/head_image"
-                    android:text="Baron"
+                    android:text=""
                     android:textColor="#1B1A1A"
                     android:textSize="16sp" />
 
@@ -92,7 +92,7 @@
                     android:layout_marginLeft="23dp"
                     android:layout_marginTop="53dp"
                     android:layout_toRightOf="@+id/head_image"
-                    android:text="组长：冬天的精灵"
+                    android:text=""
                     android:textColor="@color/text_gray_mine"
                     android:textSize="14sp" />
 
@@ -120,7 +120,7 @@
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:layout_marginRight="55dp"
-                    android:text="更换企业"
+                    android:text="更换公司"
                     android:textColor="@color/text_gray_mine"
                     android:textSize="14sp" />
 
@@ -134,6 +134,7 @@
             </RelativeLayout>
 
             <RelativeLayout
+                android:visibility="gone"
                 android:id="@+id/balance_layout"
                 android:layout_width="wrap_content"
                 android:layout_height="60dp"
@@ -182,6 +183,29 @@
                     android:layout_marginRight="24dp"
                     android:background="@mipmap/arrow_right" />
             </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/issue_ticket"
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                android:layout_marginTop="7dp"
+                android:background="@color/white">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="24dp"
+                    android:text="出票记录"
+                    android:textColor="@color/text_gray_mine"
+                    android:textSize="14sp" />
+
+                <View
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="24dp"
+                    android:background="@mipmap/arrow_right" />
+            </RelativeLayout>
 
             <RelativeLayout
                 android:id="@+id/set_layout"
@@ -209,6 +233,7 @@
             </RelativeLayout>
 
             <RelativeLayout
+                android:visibility="gone"
                 android:id="@+id/update_layout"
                 android:layout_width="wrap_content"
                 android:layout_height="60dp"
@@ -221,6 +246,40 @@
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="24dp"
                     android:text="检查更新"
+                    android:textColor="@color/text_gray_mine"
+                    android:textSize="14sp" />
+
+                <View
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="24dp"
+                    android:background="@mipmap/arrow_right" />
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/service_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                android:layout_marginTop="7dp"
+                android:background="@color/white">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="24dp"
+                    android:text="联系客服"
+                    android:textColor="@color/text_gray_mine"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="55dp"
+                    android:text="3122469463@qq.com"
                     android:textColor="@color/text_gray_mine"
                     android:textSize="14sp" />
 

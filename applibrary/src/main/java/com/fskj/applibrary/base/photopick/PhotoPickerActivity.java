@@ -140,7 +140,10 @@ public class PhotoPickerActivity extends AppCompatActivity {
                     Image image = (Image) adapterView.getAdapter().getItem(i);
                     selectImageFromGrid(image, mode);
                 }
-            } else {
+            } else {//
+
+                //     <input class="upload-input"  accept="image/*" multiple required type="file" @change="chooseImg">
+
                 // 正常操作
                 Image image = (Image) adapterView.getAdapter().getItem(i);
                 selectImageFromGrid(image, mode);

@@ -4,7 +4,9 @@ package com.fskj.applibrary.domain.login;
 import com.fskj.applibrary.domain.MessageTo;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
+@EqualsAndHashCode(callSuper=false)
 @Data
 public class UserInfoTo extends MessageTo {
 

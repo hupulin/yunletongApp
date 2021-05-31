@@ -28,7 +28,7 @@
                 android:id="@+id/cancel"
                 android:textColor="#999999"
                 android:textSize="14dp"
-                android:textStyle="bold" />
+                />
 
             <TextView
                 android:visibility="gone"

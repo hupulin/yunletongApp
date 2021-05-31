@@ -1,5 +1,6 @@
 package com.example.yule.main;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -7,12 +8,16 @@ import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
+import android.view.GestureDetector;
 import android.view.KeyEvent;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.TextView;
 
 import com.example.yule.R;
 import com.example.yule.login.AuthenticationActivity;
+import com.example.yule.login.AuthenticationStateActivity;
 import com.example.yule.main.fragment.ClockFragment;
 import com.example.yule.main.fragment.InspectionFragment;
 import com.example.yule.main.fragment.InspectionListFragment;
@@ -20,6 +25,7 @@ import com.example.yule.main.fragment.MineFragment;
 import com.example.yule.main.fragment.TicketFragment;
 import com.example.yule.main.presenter.MainActivityPresenter;
 import com.example.yule.member.MemberFragment;
+import com.fskj.applibrary.api.LoginApi;
 import com.fskj.applibrary.base.ActivityManager;
 import com.fskj.applibrary.base.BaseActivity;
 import com.fskj.applibrary.base.SpUtil;
@@ -79,15 +85,13 @@ public class MainActivity extends BaseActivity {
         super.submitDataSuccess(data);
         fragmentMine.setView();
     }
-
+    NiftyDialogBuilder dialogBuilder;
     private void showDialog() {
-        isShowdialog = true;
-        NiftyDialogBuilder dialogBuilder = NiftyDialogBuilder.getInstance(this);
+        dialogBuilder   = NiftyDialogBuilder.getInstance(this);
         dialogBuilder.setContentView(com.fskj.applibrary.R.layout.dialog_alert);
         TextView cancel = dialogBuilder.findViewById(com.fskj.applibrary.R.id.cancel);
         TextView confirm = dialogBuilder.findViewById(com.fskj.applibrary.R.id.confirm);
         TextView tipText = dialogBuilder.findViewById(com.fskj.applibrary.R.id.title);
-
         tipText.setText("用户尚未实名，请先实名");
         dialogBuilder.show();
         confirm.setText("去实名");
@@ -99,11 +103,22 @@ public class MainActivity extends BaseActivity {
             goToAnimation(1);
         });
         cancel.setOnClickListener(v1 -> {
+            SpUtil.put("Token","");
             Observable.from(ActivityManager.activityList).subscribe((BaseActivity baseActivity) -> baseActivity.finish());
             finish();
             dialogBuilder.dismiss();
         });
+
+        dialogBuilder.setOnDismissListener(new DialogInterface.OnDismissListener() {
+            @Override
+            public void onDismiss(DialogInterface dialog) {
+                dialogBuilder.show();
+            }
+        });
     }
+    private GestureDetector gd;
+    private float startX;
+    private float startY;
 
     private void initData() {
         useType = userInfoHelp.getUserInfo().getM_type();
@@ -111,6 +126,12 @@ public class MainActivity extends BaseActivity {
         if (userInfoHelp.getUserInfo().getIs_face() == 0) {
             showDialog();
         }
+//        if(userInfoHelp.getUserInfo().getIs_gov()==0){
+//            //TODo  账号待审核状态
+//            Intent intent = new Intent(this, AuthenticationStateActivity.class);
+//            startActivity(intent);
+//            goToAnimation(1);
+//        }
     }
 
     @Override
@@ -122,13 +143,14 @@ public class MainActivity extends BaseActivity {
 
     int useType;
     MineFragment fragmentMine;
+    ClockFragment fragmentClock;
     private void initFragment() {
 
         TicketFragment fragmentTicket = new TicketFragment();
          fragmentMine = new MineFragment();
         MemberFragment fragmentMember = new MemberFragment();
         InspectionFragment fragmentInspection = new InspectionFragment();
-        ClockFragment fragmentClock = new ClockFragment();
+         fragmentClock = new ClockFragment();
         InspectionListFragment fragmentInspectionList = new InspectionListFragment();
         if (useType == 0) {
             fragmentList.add(fragmentClock);
@@ -136,8 +158,6 @@ public class MainActivity extends BaseActivity {
             fragmentList.add(fragmentMine);
             ticketText.setText("票");
             ticketIcon.setBackground(getResources().getDrawable(R.mipmap.ticket_un));
-
-
         } else if (useType == 1) {
             fragmentList.add(fragmentClock);
             fragmentList.add(fragmentMember);
@@ -146,11 +166,19 @@ public class MainActivity extends BaseActivity {
             ticketIcon.setBackground(getResources().getDrawable(R.mipmap.member_un));
 
         } else {
+//            fragmentList.add(fragmentClock);
+//            fragmentList.add(fragmentInspection);
+//            fragmentList.add(fragmentInspectionList);
+//            fragmentList.add(fragmentMine);
+//            clockText.setText("巡查");
+//            ticketText.setText("巡查记录");
+//            ticketIcon.setBackground(getResources().getDrawable(R.mipmap.record_un));
+            fragmentList.add(fragmentClock);
+
             fragmentList.add(fragmentInspection);
-            fragmentList.add(fragmentInspectionList);
             fragmentList.add(fragmentMine);
-            clockText.setText("巡查");
-            ticketText.setText("巡查记录");
+            clockText.setText("打卡");
+            ticketText.setText("巡查");
             ticketIcon.setBackground(getResources().getDrawable(R.mipmap.record_un));
 
         }
@@ -206,6 +234,12 @@ public class MainActivity extends BaseActivity {
 
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        fragmentClock. stopLocation();
+    }
+
     @OnClick({R.id.clock_layout, R.id.ticket_layout, R.id.mine_layout})
     public void onViewClicked(View view) {
         switch (view.getId()) {
@@ -236,11 +270,12 @@ public class MainActivity extends BaseActivity {
     private Handler handler = new Handler();
     private boolean isShowdialog;
 
+
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-
         if (keyCode == KeyEvent.KEYCODE_BACK) {
-            if (isShowdialog) {
+            showMessage("keyCode="+keyCode);
+            if (dialogBuilder.isShowing()) {
                 return true;
             } else {
                 showMessage("再返回一次退出云乐通");

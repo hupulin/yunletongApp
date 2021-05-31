@@ -53,7 +53,7 @@ public class CancellationActivity extends BaseActivity {
         phone.setText(userInfoTo.getPhone_number());
     }
 
-    boolean isSelect = true;
+    boolean isSelect = false;
 
     @OnClick({R.id.confirm, R.id.select_check, R.id.to_agreement, R.id.send_code})
     public void onViewClicked(View view) {
@@ -86,6 +86,10 @@ public class CancellationActivity extends BaseActivity {
                 startActivity(intent);
                 break;
             case R.id.send_code:
+                if (!isSelect) {
+                    showMessage("请先阅读并同意账号注销协议条款");
+                    return;
+                }
                 presenter.sendSMS(userInfoTo.getPhone_number());
                 break;
         }

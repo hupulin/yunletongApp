@@ -1,5 +1,7 @@
 package com.fskj.applibrary.base.image;
 
+import android.util.Log;
+
 import com.fskj.applibrary.api.ApiClient;
 import com.fskj.applibrary.api.InspectionApi;
 import com.fskj.applibrary.api.MyselfApi;
@@ -29,6 +31,7 @@ public class UploadImageModel extends BasePresenter {
 
     public void uploadImageList(List<File> imagePathList, UploadImageListener listener) {
         pathKey = "";
+        Log.i("22222", "uploadImageList: "+imagePathList.size());
         for (int i = 0; i < imagePathList.size(); i++) {
             keyRecordList.clear();
             File file = imagePathList.get(i);

@@ -58,7 +58,7 @@ public class InspectionAdapter extends BaseAdapter<InspectionRecordTo.DataBean, 
         }
         binding.arrow.setBackground(mContext.getResources().getDrawable(model.isFold()? R.mipmap.arrow_up: R.mipmap.arrow_down));
         binding.normalNum.setText("巡查正常  "+ model.getTrue_normal()+"条");
-        binding.abnormalNum.setText("巡查异常  "+ model.getTrue_normal()+"条");
+        binding.abnormalNum.setText("巡查异常  "+ model.getFalse_normal()+"条");
         binding.itemClick.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

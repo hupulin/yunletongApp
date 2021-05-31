@@ -4,10 +4,12 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,11 +19,14 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.yule.R;
+import com.example.yule.login.FillInformationActivity;
 import com.example.yule.login.LoginActivity;
 import com.example.yule.main.presenter.UpdatePresenter;
 import com.example.yule.mine.BalanceActivity;
 import com.example.yule.mine.ClockRecordActivity;
 import com.example.yule.mine.InvitationCodeActivity;
+import com.example.yule.mine.IssueTicketsActivity;
+import com.example.yule.mine.ServiceActivity;
 import com.example.yule.mine.UserInfoActivity;
 import com.example.yule.util.AutoUpdateUI;
 import com.fskj.applibrary.base.ActivityManager;
@@ -30,6 +35,7 @@ import com.fskj.applibrary.base.BaseFragment;
 import com.fskj.applibrary.base.SpUtil;
 import com.fskj.applibrary.domain.UpdateInfo;
 import com.fskj.applibrary.impl.PermissionListener;
+
 import com.fskj.applibrary.util.TipsDialog;
 import com.gitonway.lee.niftymodaldialogeffects.lib.NiftyDialogBuilder;
 
@@ -59,11 +65,16 @@ public class MineFragment extends BaseFragment {
     RelativeLayout balanceLayout;
     @BindView(R.id.clock_layout)
     RelativeLayout clockLayout;
+    @BindView(R.id.issue_ticket)
+    RelativeLayout issueTicket;
     @BindView(R.id.head_image)
     ImageView headImage;
     @BindView(R.id.title_name)
     TextView titleName;
-    UpdatePresenter presenter ;
+    @BindView(R.id.version)
+    TextView versionName;
+    UpdatePresenter presenter;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -76,24 +87,26 @@ public class MineFragment extends BaseFragment {
 
     private void initView() {
         setView();
-        presenter=new    UpdatePresenter(this);
+        presenter = new UpdatePresenter(this);
+        versionName.setText("版本号：V"+getVersion());
     }
 
     int useType;
+
 
     public void setView() {
         userInfoTo = userInfoHelp.getUserInfo();
         useType = userInfoTo.getM_type();
         if (useType == 0) {
             name.setText(userInfoTo.getNickname());
+            issueTicket.setVisibility(View.GONE);
+
             if (userInfoTo.getCompany() != null && userInfoTo.getCompany().getName() != null) {
                 companyName.setText("公司：" + userInfoTo.getCompany().getName());
             } else {
                 companyName.setText("公司：" + "暂未绑定");
-
             }
-
-            if (userInfoTo.getFid_user()!=null&&!(TextUtils.isEmpty(userInfoTo.getFid_user().getNickname()))) {
+            if (userInfoTo.getFid_user() != null && !(TextUtils.isEmpty(userInfoTo.getFid_user().getNickname()))) {
                 manageName.setText("组长：" + userInfoTo.getFid_user().getNickname());
             } else {
                 manageName.setText("组长：" + "暂未绑定");
@@ -103,38 +116,51 @@ public class MineFragment extends BaseFragment {
             companyName.setVisibility(View.GONE);
             if (userInfoTo.getCompany() != null && userInfoTo.getCompany().getName() != null) {
                 manageName.setText("公司：" + userInfoTo.getCompany().getName());
+            }else{
+                manageName.setText("公司：暂无");
+
             }
             invitationLayout.setVisibility(View.GONE);
             balanceLayout.setVisibility(View.GONE);
+//            issueTicket.setVisibility(View.GONE);
+
         } else {
             titleName.setText("我的");
             name.setText(userInfoTo.getNickname());
             companyName.setVisibility(View.GONE);
             if (userInfoTo.getCompany() != null && userInfoTo.getCompany().getName() != null) {
                 manageName.setText("公司：" + userInfoTo.getCompany().getName());
+            }else{
+                manageName.setText("公司：暂无" );
+
             }
+            issueTicket.setVisibility(View.GONE);
             invitationLayout.setVisibility(View.GONE);
             balanceLayout.setVisibility(View.GONE);
             clockLayout.setVisibility(View.GONE);
         }
-
-
         Glide.with(getActivity()).load(userInfoTo.getHeadimg()).placeholder(R.mipmap.use_image).into(headImage);
     }
 
-    @OnClick({R.id.logout, R.id.set_layout, R.id.balance_layout, R.id.invitation_layout, R.id.clock_layout, R.id.update_layout,})
+    @OnClick({R.id.logout, R.id.service_layout, R.id.issue_ticket, R.id.set_layout, R.id.balance_layout, R.id.invitation_layout, R.id.clock_layout, R.id.update_layout,})
     public void onViewClicked(View view) {
         Intent intent;
         switch (view.getId()) {
             case R.id.logout:
                 showLogOutDialog();
+//                timeDialog();
                 break;
             case R.id.update_layout:
                 presenter.getUpdateInfo();
-
                 break;
             case R.id.clock_layout:
                 intent = new Intent(getActivity(), ClockRecordActivity.class);
+//                intent = new Intent(getActivity(), FillInformationActivity.class);
+                startActivity(intent);
+                goToAnimation(1);
+                break;
+                case R.id.issue_ticket:
+                intent = new Intent(getActivity(), IssueTicketsActivity.class);
                 startActivity(intent);
                 goToAnimation(1);
                 break;
@@ -153,11 +179,18 @@ public class MineFragment extends BaseFragment {
                 startActivity(intent);
                 goToAnimation(1);
                 break;
+
+            case R.id.service_layout:
+                intent = new Intent(getActivity(), ServiceActivity.class);
+                startActivity(intent);
+                goToAnimation(1);
+                break;
         }
     }
 
     @Override
     public void onResume() {
+        setView();
         super.onResume();
     }
 
@@ -181,12 +214,12 @@ public class MineFragment extends BaseFragment {
         });
     }
 
-private  String  versionName;
+
     @Override
     protected void submitDataSuccess(Object data) {
         super.submitDataSuccess(data);
-        UpdateInfo mode=        (UpdateInfo) data;
-        if( !getVersion().equals(mode.getVersion())){
+        UpdateInfo mode = (UpdateInfo) data;
+        if (!getVersion().equals(mode.getVersion())) {
             getPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE, new PermissionListener() {
                 @Override
                 public void accept(String permission) {
@@ -200,11 +233,12 @@ private  String  versionName;
                 }
             });
 
-        }else {
+        } else {
             showMessage("已是最新版本，无需更新");
         }
 
     }
+
     /**
      * 获取版本号
      *

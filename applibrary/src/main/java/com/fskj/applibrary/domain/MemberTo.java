@@ -5,16 +5,18 @@ import com.mcxtzhang.indexlib.IndexBar.bean.BaseIndexPinyinBean;
 import java.io.Serializable;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 /**
  * Created by zhangxutong .
  * Date: 16/08/28
  */
+@EqualsAndHashCode(callSuper=false)
 @Data
 public class MemberTo extends BaseIndexPinyinBean implements Serializable {
 
     private String nickname;//名字
-    private int id;//名字
+    private int id;//
     private String headimg;//头像
     private String remark_name;//备注
     private int star_num;//星星数

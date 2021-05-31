@@ -1,14 +1,19 @@
 package com.example.yule.login;
 
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.SystemClock;
+import android.text.SpannableString;
+import android.text.Spanned;
 import android.text.TextUtils;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
+import android.text.style.ClickableSpan;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.EditText;
@@ -19,9 +24,13 @@ import com.example.yule.R;
 import com.example.yule.company.CompanyLoginActivity;
 import com.example.yule.login.presenter.LoginPresenter;
 import com.example.yule.main.MainActivity;
+import com.example.yule.web.StaticWebViewActivity;
 import com.fskj.applibrary.base.ActivityManager;
 import com.fskj.applibrary.base.BaseActivity;
+import com.fskj.applibrary.base.SpUtil;
 import com.fskj.applibrary.util.StatueBarUtil;
+import com.fskj.applibrary.util.TipsDialog;
+import com.gitonway.lee.niftymodaldialogeffects.lib.NiftyDialogBuilder;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -64,24 +73,86 @@ public class LoginActivity extends BaseActivity {
         StatueBarUtil.setStatueBarTextBlack(getWindow());
         ButterKnife.bind(this);
         initData();
+//        int[] height = {1,8,6,2,5,4,8,3,7};
+//        getMax(height);
+
+
+    }
+    public void getMax(int[]  numList) {
+        int max = 0;
+        for(int i = 0, j = numList.length - 1; i < j ; ){
+            // = numList[i] < numList[j] ? numList[i++] : numList[j--];
+            // max = Math.max(max, (j - i + 1) * minHeight);
+            int minHeight ;
+            if( numList[i] < numList[j]){
+                minHeight  =numList[i];
+                max = Math.max(max, (j - i) * minHeight);
+                i++;
+            }else{
+                minHeight  =numList[j];
+                max = Math.max(max, (j - i) * minHeight);
+                j--;
+            }
+        }
+        showMessage(max+"");
 
     }
 
     private boolean canOut;
     private Handler handler = new Handler();
 
+    private void showDialog() {
+        SpannableString str = new SpannableString("请你务必仔细阅读，充分理解“服务协议”和“隐私政策”各条款。\n你可阅读《个人隐私协议和服务条款》了解详细信息。\n" +
+                "如你同意，请点击“同意”开始接受我们的服务");
+        ClickableSpan clickableSpan = new ClickableSpan() {
+            @Override
+            public void onClick(View widget) {
+                Intent intent = new Intent(LoginActivity.this, StaticWebViewActivity.class);
+                intent.putExtra("Title", "服务协议及隐私协议");
+                intent.putExtra("Url", "user/agreement");
+                startActivity(intent);
+                goToAnimation(1);
+            }
+        };
+        str.setSpan(clickableSpan, 35, 48, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        NiftyDialogBuilder dialog = TipsDialog.showTitle(this, str, "服务协议和隐私政策");
+        TextView confirm = dialog.findViewById(R.id.confirm);
+        TextView cancel = dialog.findViewById(R.id.cancel);
+        cancel.setText("拒绝");
+        confirm.setText("同意");
+        cancel.setTextColor(Color.parseColor("#8C8C8C"));
+        confirm.setOnClickListener(v1 -> {
+            dialog.dismiss();
+            SpUtil.put("isSecond",true);
+        });
+        cancel.setOnClickListener(v1 -> {
+            Observable.from(ActivityManager.activityList).subscribe((BaseActivity baseActivity) -> baseActivity.finish());
+            finish();
+        });
+        dialog.setOnKeyListener(new DialogInterface.OnKeyListener() {
+            @Override
+            public boolean onKey(DialogInterface dialog, int keyCode, KeyEvent event) {
+                if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP) {
+                    return  true;
+                }
+                return false;
+            }
+        });
+    }
+
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-
         if (keyCode == KeyEvent.KEYCODE_BACK) {
-            showMessage("再返回一次退出云乐通");
-            if (canOut) {
-                Observable.from(ActivityManager.activityList).subscribe((BaseActivity baseActivity) -> baseActivity.finish());
-                finish();
-            }
-            canOut = true;
-            handler.postDelayed(() -> canOut = false, 3000);
-            return true;
+                showMessage("再返回一次退出云乐通");
+                if (canOut) {
+                    Observable.from(ActivityManager.activityList).subscribe((BaseActivity baseActivity) -> baseActivity.finish());
+                    finish();
+                }
+                canOut = true;
+                handler.postDelayed(() -> canOut = false, 3000);
+                return true;
+
+
         }
         return super.onKeyDown(keyCode, event);
     }
@@ -90,6 +161,9 @@ public class LoginActivity extends BaseActivity {
         loginSwitch.getPaint().setAntiAlias(true);
         loginSwitch.getPaint().setFlags(Paint.UNDERLINE_TEXT_FLAG);
         presenter = new LoginPresenter(this);
+        if (!SpUtil.getBoolean("isSecond")) {
+            showDialog();
+        }
 //        codeLogin.getPaint().setFlags(Paint.UNDERLINE_TEXT_FLAG); //下划线
     }
 
@@ -178,10 +252,12 @@ public class LoginActivity extends BaseActivity {
 
 
         Intent intent = new Intent(this, MainActivity.class);
+        finish();
         startActivity(intent);
         goToAnimation(1);
 
     }
+
     private int countTime;
 
     private void sendCodeSuccess() {
@@ -197,6 +273,7 @@ public class LoginActivity extends BaseActivity {
             }
         }).start();
     }
+
     @Override
     public void loadDataSuccess(Object data) {
         sendCodeSuccess();

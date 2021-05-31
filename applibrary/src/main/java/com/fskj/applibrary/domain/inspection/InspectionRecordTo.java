@@ -112,7 +112,6 @@ public class InspectionRecordTo  implements Serializable{
             private List<ImgInfoBean> img_info;
 
             @Data
-
             public static class ImgInfoBean implements Serializable {
                 /**
                  * id : 86
